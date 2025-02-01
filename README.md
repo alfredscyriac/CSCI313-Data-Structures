@@ -19,14 +19,14 @@ Ensure you have the following installed:
 - Java Development Kit (JDK 11+)
 - An IDE (IntelliJ IDEA, Eclipse, or VS Code with Java Extension)
 
-## Cloning the Repository
+## 📂 Cloning the Repository
 To get a local copy, run:
 ```bash
 git clone https://github.com/yourusername/CSCI-313-Data-Structures.git
 cd CSCI-313-Data-Structures
 ```
 
-## Compiling and Running Java Files 
+## 🖥️ Compiling and Running Java Files 
 To compile a Java file:
 ```bash
 javac filename.java
