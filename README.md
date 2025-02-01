@@ -16,8 +16,8 @@ This repository contains my notes, assignments, and projects for CSCI 313.
 
 ## 🛠 Setup & Usage
 Ensure you have the following installed: 
-- **Java Development Kit (JDK 11+)**
-- **An IDE (IntelliJ IDEA, Eclipse, or VS Code with Java Extension)**
+- Java Development Kit (JDK 11+)
+- An IDE (IntelliJ IDEA, Eclipse, or VS Code with Java Extension)
 
 ## Cloning the Repository
 To get a local copy, run:
