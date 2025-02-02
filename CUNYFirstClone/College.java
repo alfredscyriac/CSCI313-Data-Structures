@@ -6,5 +6,5 @@ public abstract class College {
     public College(String CollegeName, String CollegeLocation){
         this.CollegeName=CollegeName; 
         this.CollegeLocation=CollegeLocation; 
-    } 
+    }
 }
