@@ -14,39 +14,59 @@ abstract class Card {
 	private int expirationYear;
 	private int cvv;
 	
-	public Card() { //Default constructor
-		
+	//Default constructor
+	public Card() { 
+		cardHolder=null;
+		cardNumber=null;
+		expirationMonth=0; 
+		expirationYear=0;
+		cvv=0;
 	}
 	
 	//Non-default constructor (also constructor overloading)
 	public Card(String cardHolder, String cardNumber, int month, int year, int cvv) {
-		
+		this.cardHolder = cardHolder; 
+		this.cardNumber = cardNumber; 
+		this.expirationMonth = expirationMonth; 
+		this.expirationYear = expirationYear; 
+		this.cvv = cvv; 
 	}
 	
 	//Used to shorten my typing (System.out.prin... zzz, too long)
 	public void println(String field, String data) {
-		
+		System.out.println(field + "\t" + data); 
 	}
 	
 	//Used to shorten my typing (System.out.prin... zzz, too long)
 	public void println(String s) {
-		
+		System.out.println(s);
 	}
 	
 	//Helper method
 	private String cardNumberSecure() {
-		return null;
+		int length  = this.cardNumber.length(); 
+		return "**** **** ****" + this.cardNumber.substring(length-4,length);
 	}
 	
 	//Helper method
 	private String expirationDate() {
-		return null;
+		String date = "";
+		if(this.expirationMonth<10){
+			date += "0"+this.expirationMonth;
+		}
+		else{
+			date += expirationMonth;
+		}
+		date += "/"+this.expirationYear%100;
+		return date;  
 	}
 	
 	//Used to print general card info
 	//Will be overridden for more specific use
 	public void printInfo() {
-		
+		println("CardHolder: ", this.cardHolder);
+		println("CardNumber: ", cardNumberSecure());
+		println("Expir date: ", expirationDate());
 	}
 	
 	//Notice the PRIVATE instance variables at the top?
