@@ -24,7 +24,7 @@ abstract class Card {
 	}
 	
 	//Non-default constructor (also constructor overloading)
-	public Card(String cardHolder, String cardNumber, int month, int year, int cvv) {
+	public Card(String cardHolder, String cardNumber, int expirationMonth, int expirationYear, int cvv) {
 		this.cardHolder = cardHolder; 
 		this.cardNumber = cardNumber; 
 		this.expirationMonth = expirationMonth; 
