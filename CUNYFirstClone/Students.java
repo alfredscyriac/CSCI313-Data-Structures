@@ -15,7 +15,7 @@ public class Students extends People {
             System.out.println("Already enrolled in: " + subject.getSubjectName());
         } else {
             enrolledSubjects.add(subject);
-            System.out.println("Enrolled in: " + subject.getSubjectName());
+            System.out.println("Enrolling student into: " + subject.getSubjectName());
         }
     }
     public void dropSubject(String subjectName) {
@@ -23,7 +23,7 @@ public class Students extends People {
         for (Subject subject : enrolledSubjects) {
             if (subject.getSubjectName().equalsIgnoreCase(subjectName)) {
                 enrolledSubjects.remove(subject);
-                System.out.println("Dropped: " + subject.getSubjectName());
+                System.out.println("Dropping student from: " + subject.getSubjectName());
                 found = true;
                 break;
             }
