@@ -24,11 +24,21 @@ public class ExpendableArray {
 	}
 
 	private boolean isAlmostFull() {
-		
+		if(size>=capacity/2){
+			return true; 
+		}
+		else{
+			return false; 
+		}
 	}
 	
 	private boolean isAlmostEmpty() {
-		
+		if(size<capacity/2){
+			return true; 
+		}
+		else{
+			return false; 
+		}	
 	}
 	
 	private void doubleCapacity() {
