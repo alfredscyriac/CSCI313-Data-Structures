@@ -70,6 +70,11 @@ public class ExpendableArray {
 	}
 	
 	public void remove() {
+		this.array[size-1]=null;
+		this.size--; 
+		if(this.isAlmostEmpty()){
+			this.halveCapacity();
+		}
 		
 	}
 	
