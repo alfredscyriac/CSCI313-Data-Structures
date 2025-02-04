@@ -2,9 +2,20 @@ package day_02_arrays;
 
 public class BinarySearch {
 
-	public static boolean binarySearch(int[] arr, int target,
-										int left, int right) {
-		
+	public static boolean binarySearch(int[] arr, int target,int left, int right) {
+		while(left<=right){
+			int middle = (left + right) / 2; 
+            if(arr[middle]==target){
+                return true; 
+            }
+            else if(arr[middle]<target){
+                left=middle+1; 
+            }
+            else if(arr[middle]>target){
+                right=middle-1; 
+            }
+		}
+		return false; 
 	}	
 	
 	public static void main(String[] args) {
