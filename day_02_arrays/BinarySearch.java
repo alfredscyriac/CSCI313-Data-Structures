@@ -26,7 +26,6 @@ public class BinarySearch {
 		System.out.println(binarySearch(arr, target, 0, n));
 		target = 10;
 		System.out.println(binarySearch(arr, target, 0, n));
-
 	}
 
 }
