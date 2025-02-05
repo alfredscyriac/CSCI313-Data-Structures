@@ -66,7 +66,9 @@ public class ExpendableArray {
 	}
 	
 	public void add(String e) {
-		
+		array[size]=e; 
+		size++; 
+		this.isAlmostFull();
 	}
 	
 	public void remove() {
@@ -79,15 +81,33 @@ public class ExpendableArray {
 	}
 	
 	public void remove(int index) {
-		
+		for (int i = index; i <= size; i++){ 
+			array[i] = array[i+1];
+		}
+		size--;
+		isAlmostEmpty();
 	}
 	
 	public boolean isEmpty() {
-		return true;
+		if(this.size==0){
+			return true;
+		}
+		else{
+			return false; 
+		}
 	}
 	
 	public String toString() {
-		return null;
+		String ans = "[";
+		for (int i = 0; i < size; i++) {
+			if (i == size-1) {
+				ans += array[i] + "]";
+			}
+			else {
+				ans += array[i] + ",";
+			}
+		}
+			return ans;
 	}
 	
 	public int getSize() { return this.size; }
