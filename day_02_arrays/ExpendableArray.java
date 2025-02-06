@@ -7,7 +7,7 @@ public class ExpendableArray {
 	
 	public ExpendableArray(){//default constructor
 		this.size=0; 
-		this.capacity=5; 
+		this.capacity=10; 
 		this.array = new String[capacity];
 		this.fillArray();
 	}
