@@ -13,17 +13,27 @@ public class MergeSortAlgo {
 		int resultPtr = 0;
 		
 		while(firstPtr < nfirst && secondPtr < nsecond) {
-			
+			if(firstHalf[firstPtr]<secondHalf[secondPtr]){
+				result[resultPtr]=firstHalf[firstPtr];
+				resultPtr++;
+				firstPtr++;
+			}
+			else{
+				result[resultPtr]=secondHalf[secondPtr];
+				resultPtr++;
+				secondPtr++;
+			}
 		}
-		
-		while(firstPtr < nfirst) {
-			
+		while(firstPtr<nfirst){
+			result[resultPtr]=firstHalf[firstPtr];
+			resultPtr++;
+			firstPtr++;
 		}
-		
-		while(secondPtr < nsecond) {
-			
+		while(secondPtr<nsecond){
+			result[resultPtr]=secondHalf[secondPtr];
+			resultPtr++;
+			secondPtr++;
 		}
-		
 		return result;
 	}
 	
