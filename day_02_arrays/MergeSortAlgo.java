@@ -39,10 +39,13 @@ public class MergeSortAlgo {
 	
 	public static int[] mergeSort(int[] arr, int left, int right) {
 		if(left == right) {
-			// Single element array
-	        
+			int[] basecase = {arr[left]};
+			return basecase;
 		}
-		return new int[0];
+		int midIndex = (left+right)/2;
+		int[] firstHalf = mergeSort(arr, left, midIndex);
+		int[] secondHalf = mergeSort(arr, midIndex+1, right);
+		return merge(firstHalf, secondHalf);
 	}
 
 
