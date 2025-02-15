@@ -48,7 +48,24 @@ public class DoublyLinkedList<T> {
 	}
 	
 	public void insertAtPosition(T data, int pos) {
-		
+		Node newnode = new Node(data); 
+		Node curr = dummyhead; 
+		if(pos<=0){
+			insertFirst(data); 
+		}
+		else if(pos>=length+1){
+			insertLast(data);
+		}
+		else{
+			for(int i=0; i<pos-1;i++){
+				curr=curr.next; 
+			}
+			newnode.next=curr.next; 
+			curr.next.prev=newnode;
+			curr.next=newnode;
+			newnode.prev=curr; 
+			length++;
+		}
 	}
 	
 	public void removeFirst(T data) {
