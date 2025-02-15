@@ -60,7 +60,14 @@ public class DoublyLinkedList<T> {
 	}
 	
 	public boolean isPresent(Node n) {
-		return true;
+		Node curr = dummyhead.next; 
+		while(curr!=null){
+			if(curr==n){
+				return true;
+			}
+			curr=curr.next;
+		}
+		return false;
 	}
 	
 	public boolean isEmpty() {
