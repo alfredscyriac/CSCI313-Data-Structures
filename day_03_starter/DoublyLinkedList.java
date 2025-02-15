@@ -40,7 +40,11 @@ public class DoublyLinkedList<T> {
 	}
 	
 	public void insertLast(T data) {
-		
+		Node newnode = new Node(data);
+		tail.next = newnode; 
+		newnode.prev=tail; 
+		tail=newnode; 
+		length++; 
 	}
 	
 	public void insertAtPosition(T data, int pos) {
