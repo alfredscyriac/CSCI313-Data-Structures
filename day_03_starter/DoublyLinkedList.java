@@ -64,19 +64,28 @@ public class DoublyLinkedList<T> {
 	}
 	
 	public boolean isEmpty() {
-		return true;
+		if(length==0){
+			return true;
+		}
+		return false;
 	}
 	
 	public Node getFirst() {
-		return null;
+		if(length>0){
+			return dummyhead.next;
+		}
+		return null; 
 	}
 	
 	public Node getLast() {
-		return null;
+		if(length==0){
+			return null;
+		}
+		return tail; 
 	}
 	
 	public int getLength() {
-		return -1;
+		return length;
 	}
 	
 	public T[] toArray() {
