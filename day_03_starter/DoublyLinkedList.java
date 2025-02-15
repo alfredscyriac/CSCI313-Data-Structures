@@ -101,7 +101,24 @@ public class DoublyLinkedList<T> {
 	}
 	
 	public void removeAtPosition(T data, int pos) {
-		
+		if(pos<0 || pos>length+1){
+			return;
+		}
+		else if(pos==1){
+			removeFirst(data);
+		}
+		else if(pos==length){
+			removeLast(data);
+		}
+		else{
+			Node curr = dummyhead; 
+			for(int i=0; i<pos-1;i++){
+				curr=curr.next;
+			}
+			curr.next=curr.next.next; 
+			curr.next.prev=curr; 
+			length--; 
+		}
 	}
 	
 	public boolean isPresent(Node n) {
