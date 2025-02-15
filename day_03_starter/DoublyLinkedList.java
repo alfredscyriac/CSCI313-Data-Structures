@@ -1,30 +1,42 @@
-package day_04_lists;
+package day_03_starter;
 
-public class DoublyLinkedList {
-	//---------------------Nested Node Class---------------------//
+public class DoublyLinkedList<T> {
 	public class Node {
-		String data;
+		T data;
 		Node prev;
 		Node next;
 		
-		public Node(String data) {
+		public Node(T data) {
 			this.data = data;
 			this.prev = null;
 			this.next = null;
 		}
 	}
-	//-----------------------------------------------------------//
 	
 	Node dummyhead;
 	Node tail;
 	int length;
 	
 	public DoublyLinkedList() {
-		
+		dummyhead = new Node(null);
+		tail=dummyhead;
+		length=0;
 	}
 	
 	public void insertFirst(T data) {
-		return;
+		Node newnode = new Node(data); 
+		if(length==0){
+			dummyhead.next=newnode; 
+			newnode.prev=dummyhead; 
+			tail=newnode; 
+		}
+		else{
+			dummyhead.next.prev=newnode;
+			newnode.next=dummyhead.next;
+			dummyhead.next=newnode;
+			newnode.prev=dummyhead;
+		}
+		length++; 
 	}
 	
 	public void insertLast(T data) {
