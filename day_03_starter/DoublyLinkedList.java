@@ -158,7 +158,18 @@ public class DoublyLinkedList<T> {
 	}
 	
 	public T[] toArray() {
-		return null;
+		if(length==0){
+			return null;
+		}
+		T[] arr = (T[]) new Object[length];
+		Node curr = dummyhead.next; 
+		int i=0; 
+		while(curr!=null){
+			arr[i]=curr.data; 
+			curr=curr.next;
+			i++;
+		}
+		return arr; 
 	}
 	
 	public T[] toArrayInverse() {
