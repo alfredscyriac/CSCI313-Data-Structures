@@ -12,7 +12,7 @@ public class DoublyLinkedList<T> {
 			this.next = null;
 		}
 	}
-	
+
 	Node dummyhead;
 	Node tail;
 	int length;
@@ -69,7 +69,19 @@ public class DoublyLinkedList<T> {
 	}
 	
 	public void removeFirst(T data) {
-		
+		if(length==0){
+			return; 
+		}
+		else if(length==1){
+			dummyhead.next=null;
+			tail=dummyhead;
+			length--; 
+		}
+		else{
+			dummyhead.next=dummyhead.next.next;
+			dummyhead.next.prev=dummyhead; 
+		}
+		length--;
 	}
 	
 	public void removeLast(T data) {
