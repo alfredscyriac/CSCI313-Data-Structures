@@ -80,12 +80,24 @@ public class DoublyLinkedList<T> {
 		else{
 			dummyhead.next=dummyhead.next.next;
 			dummyhead.next.prev=dummyhead; 
+			length--;
 		}
-		length--;
 	}
 	
 	public void removeLast(T data) {
-		
+		if(length==0){
+			return;
+		}
+		else if(length==1){
+			dummyhead.next=null;
+			tail=dummyhead; 
+			length--; 
+		}
+		else{
+			tail.prev.next=null;
+			tail=tail.prev;
+			length--;
+		}
 	}
 	
 	public void removeAtPosition(T data, int pos) {
