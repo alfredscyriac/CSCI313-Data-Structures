@@ -1,4 +1,4 @@
-package day_05_queue_stack;
+package day_05_starter;
 
 public class ArrayStack {
 	String[] stack;
