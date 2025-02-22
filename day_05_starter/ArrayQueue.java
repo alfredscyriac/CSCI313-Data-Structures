@@ -8,7 +8,10 @@ public class ArrayQueue {
 	int rear;
 	
 	public ArrayQueue() {
-		
+		queue=new String[CAPACITY];
+		front=0;
+		rear=0;
+		size=0; 
 	}
 	
 	/**
@@ -18,7 +21,12 @@ public class ArrayQueue {
 	 * @param element
 	 */
 	public void enqueue(String element) {
-		
+		if(size==CAPACITY){
+			return;
+		}
+		queue[rear]=element;
+		rear = (rear+1)%CAPACITY; 
+		size++; 
 	}
 	
 	/**
