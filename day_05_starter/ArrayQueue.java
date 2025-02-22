@@ -37,7 +37,14 @@ public class ArrayQueue {
 	 * @return E
 	 */
 	public String dequeue() {
-		return null;
+		if (isEmpty()){
+			return null;
+		}
+		String temp = queue[front];
+		queue[front] = null;
+		front++;
+		size--;
+		return temp;
 	}
 	
 	/**
@@ -48,7 +55,10 @@ public class ArrayQueue {
 	 * @return E
 	 */
 	public String front() {
-		return null;
+		if (isEmpty()) {
+			return null;
+		}
+		return queue[front];
 	}
 	
 	public boolean isEmpty() {
