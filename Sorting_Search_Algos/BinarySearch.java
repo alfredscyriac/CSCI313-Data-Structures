@@ -1,5 +1,4 @@
 package Sorting_Search_Algos;
-import java.util.*;
 public class BinarySearch {
     public static void main(String[] args){
         int[] ints = {1,2,4,5,7,9,11};
@@ -7,6 +6,7 @@ public class BinarySearch {
         System.out.println(binarySearch(ints,8));
     }
 
+    // Time Complexity: O(logn)
     private static int binarySearch(int[] numbers,int numberToFind){
         int low = 0; 
         int high = numbers.length - 1;

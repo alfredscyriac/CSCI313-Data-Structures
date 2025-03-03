@@ -7,6 +7,8 @@ public class RecursiveBinarySearch {
         System.out.println(binarySearch(ints,0,high,9));
         System.out.println(binarySearch(ints,0,high,8));
     }
+
+    // Time Complexity: O(logn)
     private static int binarySearch(int[] nums, int low, int high, int numberToFind){
         if(low > high) {
             return -1; 
