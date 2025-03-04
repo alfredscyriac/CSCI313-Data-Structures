@@ -1,78 +1,58 @@
 package Exam1;
-import java.util.Random;
-import java.util.*; 
 
 public class MergeSort {
-    public static void main(String[] args) {
-        Random rand = new Random();
-        int[] nums = new int[10];
-
-        for(int i = 0; i < nums.length; i++) {
-            nums[i] = rand.nextInt(1000000);
+    public static int[] mergeSort(int[] arr, int left, int right){
+        if (left == right) {
+            int[] baseCase = {arr[left]};
+            return baseCase;
         }
-
-        System.out.println("Before: ");
-        printArray(nums); 
-
-        mergeSort(nums); 
-
-        System.out.println("\nBefore: ");
-        printArray(nums);
+        int mid = (left+right)/2;
+        int[] firstHalf = mergeSort(arr, left, mid);
+        int[] secondHalf = mergeSort(arr, mid+1, right);
+        return merge(firstHalf, secondHalf);
     }
-    private static void mergeSort(int[] inputArray){
-        int inputLength = inputArray.length; 
 
-        if(inputLength < 2){
-            return;
-        }
+    public static int[] merge (int[] firstHalf, int[] secondHalf) {
+        int[] results = new int[firstHalf.length + secondHalf.length];
 
-        int middleIndex = inputLength / 2;
-        int[] leftHalf = new int[middleIndex];
-        int[] rightHalf = new int[inputLength - middleIndex];
+        int firstPtr = 0;
+        int secondPtr = 0;
+        int resultsPtr = 0;
 
-        for(int i = 0; i < middleIndex; i++){
-            leftHalf[i] = inputArray[i];
-        }
-
-        for(int i = middleIndex; i < inputLength; i++){
-            rightHalf[i - middleIndex] = inputArray[i];
-        }
-        
-        mergeSort(leftHalf);
-        mergeSort(rightHalf);
-
-        merge(inputArray, leftHalf, rightHalf);
-    }
-    private static void merge(int[] inputArray, int[] left, int[] right) {
-        int leftLength = left.length;
-        int rightLength = right.length; 
-
-        int leftIndex = 0, rightIndex = 0, mergedIndex = 0; 
-
-        while(leftIndex < leftLength && rightIndex < rightLength) {
-            if(left[leftIndex] <= right[rightIndex]){
-                inputArray[mergedIndex] = left[leftIndex];
-                leftIndex++;
+        while (firstPtr < firstHalf.length && secondPtr < secondHalf.length) {
+            if (firstHalf[firstPtr] < secondHalf[secondPtr]) {
+                results[resultsPtr] = firstHalf[firstPtr];
+                firstPtr++;
             }
             else {
-                inputArray[mergedIndex] = right[rightIndex];
-                rightIndex++;
+                results[resultsPtr] = secondHalf[secondPtr];
+                secondPtr++;
             }
-            mergedIndex++;
+            resultsPtr++;
         }
-        while(leftIndex < leftLength) {
-            inputArray[mergedIndex] = left[leftIndex];
-            leftIndex++; mergedIndex++;
 
+        while (firstPtr < firstHalf.length) {
+            results[resultsPtr] = firstHalf[firstPtr];
+            firstPtr++;
+            resultsPtr++;
         }
-        while(rightIndex < rightLength) {
-            inputArray[mergedIndex] = right[rightIndex];
-            rightIndex++; mergedIndex++;
+
+        while (secondPtr < secondHalf.length) {
+            results[resultsPtr] = secondHalf[secondPtr];
+            secondPtr++;
+            resultsPtr++;
         }
+
+        return results;
     }
-    private static void printArray(int[] arr){
-        for(int i = 0; i < arr.length; i++){
-            System.out.println(arr[i]);
+
+
+	public static void main(String[] args) {
+		int[] arr = {9, 0, -3, 21, 5, 9, 1, -15};
+		arr = mergeSort(arr, 0, arr.length-1);
+        for (int a: arr) {
+            System.out.print(a + " ");
         }
-    }
+	}
+
 }
