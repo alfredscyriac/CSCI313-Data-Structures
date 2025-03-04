@@ -1,4 +1,4 @@
-package Sorting_Search_Algos;
+package Exam1;
 import java.util.Random;
 import java.util.*; 
 
