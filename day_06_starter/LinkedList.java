@@ -1,4 +1,4 @@
-package day_06_hashmaps;
+package day_06_starter;
 
 public class LinkedList<T> {
 	//---------------------Nested Node Class---------------------//
