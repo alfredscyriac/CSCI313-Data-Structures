@@ -1,14 +1,14 @@
-# Hashmaps 
+# HashMap 
 
 ## Basic Concept 
-- Hashmaps are also referred to as hash tables
+- Hashmaps store key value pairs 
 - Essentially it is an array that holds key value pairs at each index 
-- Think of a key value pair as the correlation between a student ID to a student's name
+- Think of a key value pair as the correlation between a student name to a student's ID
 
-## Java Hashmaps
+## Java's Built in HashMap
 - To use the built-in Java hasmaps first you have to import it 
 ```java 
-import java.util.HashMap
+import java.util.HashMap;
 ```
 - To intialize it within your code 
 ```java 
@@ -57,9 +57,35 @@ studentID.replace("Alfred",54321); // changes the key "Alfred" value fro 12345 -
 - In the case you don't know if a key already exists then there is a function for that: putIfAbsent()
 - Sample use case of .putIfAbsent(): 
 ```java
-studentID.putIfAbsent("LeBron James", 23); // Since the key "LeBron James" does not exist it adds this key value pair to the hasmap
+studentID.putIfAbsent("LeBron James", 23); // "LeBron James" does not exist --> added to hashmap
 ```
-- 
+
+## Application of HashMap in LeetCode Style Question 
+### Prompt: given two int arrays, determine whether or not the two arrays have an element in common 
+### Solution: 
+```java
+public static boolean itemInCommon(int[] nums1, int[] nums2) {
+    // Create a hash map to store all key which is the element and value which is true or false 
+    HashMap<Integer,Boolean> hashmap = new HashMap<>(); 
+
+    // This kind of for loop makes it so i = nums[i] at each iteration 
+    // Adding each elements in the first array as a key to our hashmap and setting their value to true
+    for (int i : nums1) {
+        hashmap.put(i,true); 
+    }
+
+    // As we iterate through the second array check if a key = current element  exists in our hashmap
+    // If a key did exist then .get() would not return null 
+    // when the condition is true that means we have found an element in both nums1 and nums2 --> return true
+    for (int j: nums2) { 
+        if( hashmap.get(j) != null ) return true; 
+    }
+
+    // If we iterate both arrays and don't find a commone element we return false
+    return false; 
+}
+// Time Complexity: O(n)
+```
 
 ## Hash Function 
 - Hash functions (h) convert each key (k) to an integer in the range of 0 to N-1 where N is the size of the array
@@ -69,14 +95,10 @@ studentID.putIfAbsent("LeBron James", 23); // Since the key "LeBron James" does 
 - Hash functions are considered "good" if they can avoid as many collisions as possible 
 - A hash function has 2 components: (1) Hash Code --> (2) Compression Function 
 
-## Hash Code 
-- Intially the hash function takes a key (k) and computes an integer which called the **hash code**
-- The integer that is the hash code does NOT have to be in the range 0 to N-1 and can even be negative
-
-## Compression Function 
-- The compression function is the second operation run by the hash function 
-- The compression function ensures the integer that is the hash code is in range 0 to N-1
-
+# Collision 
+- There are multiple ways to handle collisions: (1) Seperate Chaining (2) Linear Probing 
+- (1) Seperate Chaining - Creating a linked list at each index and having multiple key value pairs at 1 index
+- (2) Linear Probing - If index is already taken then find an empty index to add the key value pair 
 
 ## Key Characteristics 
 - **Average Time Complexity**: O(1) for search, insert, and delete 
