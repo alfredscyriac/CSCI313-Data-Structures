@@ -12,8 +12,54 @@ import java.util.HashMap
 ```
 - To intialize it within your code 
 ```java 
-HashMap<keyDataType,valueDataType> hashmapName = new Hashmap<>();
+HashMap<keyDataType,valueDataType> hashmapName = new HashMap<>();
 ``` 
+- Note: **Data types for key and value must NOT be primitives**
+- Tip: Use java wrapper classes (i.e.: int --> Integer)
+- Sample use case of hashmap:
+```java 
+HashMap<String,Integer> studentID = new HashMap<>(); 
+``` 
+- In the case above the key is the student's name and the value is the student's ID number 
+- We can add an element to our hashmap using the .put() function 
+- Sample use case of .put(): 
+```java 
+studentID.put("Alfred",12345); 
+```
+- The time complexity of .put() is O(1)
+- You can retrieve the value stored at a key using .get() function 
+- Sample use case of .get():
+```java 
+studentID.get("Alfred"); // returns 12345
+```
+- The time complexity of .get() is O(1)
+- You can check if the hash map currently has a key value pair with a certain key using .containsKey() function
+- Sample use case of .containsKey():
+```java
+studentID.containsKey("Alfred"); // returns true 
+studentID.containsKey("LeBron James"); // returns false
+```
+- The complexity of .containsKey() is O(1) 
+- You can check if the hash map currently has a key value pair with a certain value using .containsValue() function
+- Sample use case of .containsValue():
+```java
+studentID.containsValue(12345); // returns true 
+studentID.containsValue(00000); // returns false
+```
+- The complexity of .containsValue() is O(1)
+- If you use the .put() function using a key that already exists, it overides the old key value pair with that key 
+- Since we are on the topic of overiding there is a built in function that does exactly that: .replace()
+- Sample use case of .replace(): 
+```java
+studentID.replace("Alfred",54321); // changes the key "Alfred" value fro 12345 --> 54321
+```
+- If you do .replace() on a key that doesn't exist then nothing will happen at all 
+- In the case you don't know if a key already exists then there is a function for that: putIfAbsent()
+- Sample use case of .putIfAbsent(): 
+```java
+studentID.putIfAbsent("LeBron James", 23); // Since the key "LeBron James" does not exist it adds this key value pair to the hasmap
+```
+- 
 
 ## Hash Function 
 - Hash functions (h) convert each key (k) to an integer in the range of 0 to N-1 where N is the size of the array
