@@ -125,6 +125,7 @@ private int hashFunction(String key) {
 > - Deterministic: Same key = same index every time
 > - Modulo Keeps Index In Bounds: Using % dataMap.length ensures index is valid
 > - Spreads Keys Out: Multiplying by 23 (prime number) and summing helps reduce collisions by mixing values
+> - All objects in Java automatically inherit a .hashCode() function
 > - **Hash Function can vary**
 
 ### Set Function
@@ -169,6 +170,9 @@ public int get(String key) {
 > - Checks for Matching Key: Compares each node’s key; returns value when found
 > - Returns Default if Not Found: Returns 0 if the key is not present in the hash map
 
+## Collision Handling 
+- Collision are caused when two keys map to the same index 
+- There are multiple ways we can handle collision: (1) Linear Probing (2) Seperate Chaining 
 
 ## Time Complexity of Common Operations with HashMap 
 

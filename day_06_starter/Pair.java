@@ -1,12 +1,12 @@
 package day_06_starter;
 
-public class Pair<K,V> {
+public class Pair <K,V> {
 	K key;
 	V value;
 	
-	public Pair(K k, V v) {
-		key = k;
-		value = v;
+	public Pair(K key, V value) {
+		this.key = key;
+		this.value = value;
 	}
 	
 	public K getKey() { return this.key; }

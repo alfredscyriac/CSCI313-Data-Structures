@@ -7,11 +7,24 @@ public class ChainHashMap<K,V> {
 	
 	public ChainHashMap() {
 		bucket = (LinkedList<Pair<K,V>>[]) new LinkedList[CAPACITY];
+		for(int i = 0; i<CAPACITY; i++) {
+			bucket[i] = new LinkedList<Pair<K,V>>();
+		}
 		size = 0;		
 	}
 	
 	public void put(Pair<K,V> pair) {
-		
+		int address = pair.getKey().hashCode() % CAPACITY;
+		Node<Par<K,V>> curr = bucket[address].getFirst(); 
+		while(curr!=null){
+			if(curr.data.getKey() == pair.getKey()){
+				curr.data.setValue(pair.getValue()); 
+				return; 
+			}
+			curr = curr.next;
+		}
+		bucket[address].insertLast(pair);
+		size++; 
 	}
 	
 	public Pair<K,V> get(){
