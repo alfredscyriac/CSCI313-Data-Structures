@@ -79,7 +79,6 @@ public static boolean itemInCommon(int[] nums1, int[] nums2) {
 ```
 
 ## Building Our Own HashMap 
-- Create a file called hashmap.java (name can vary)
 ### Constructor 
 ```java
 public class hashmap {
@@ -101,6 +100,14 @@ public class hashmap {
     }
 }
 ```
+> - **Important Notes:**
+> - Custom Hash Map Implementation: Builds your own hash map from scratch using an array and linked list chaining
+> - Fixed Initial Size: Starts with 7 buckets (array of Nodes)
+> - Node Class for Chaining: Each Node holds a key, value, and next pointer for collision handling.
+> - Handles Collisions with Linked Lists: Multiple nodes can chain together at the same bucket when collisions occur
+> - Constructor Sets Up Buckets: Initializes the dataMap array with the default size on object creation 
+
+
 ### Hash Function
 ```java
 private int hashFunction(String key) {
@@ -113,6 +120,13 @@ private int hashFunction(String key) {
         return hash; 
 }
 ```
+> **Important Notes:**
+> - Maps key to index: Converts a key into an array index where data will be stored
+> - Deterministic: Same key = same index every time
+> - Modulo Keeps Index In Bounds: Using % dataMap.length ensures index is valid
+> - Spreads Keys Out: Multiplying by 23 (prime number) and summing helps reduce collisions by mixing values
+> - **Hash Function can vary**
+
 ### Set Function
 ```java 
 public void set(String key, int value) {
@@ -129,6 +143,13 @@ public void set(String key, int value) {
         }
 }
 ```
+> - **Important Notes:**
+> - Stores Key-Value Pair: Adds a new key-value pair into the hash map
+> - Uses Hash Function: Finds the correct index via hashFunction(key)
+> - Handles Empty Buckets: If no node exists at the index, directly inserts the new node
+> - Handles Collisions (Chaining): If nodes already exist (collision), traverses linked list and appends the new node at the end
+> - Preserves Existing Data: Never overwrites existing nodes at the same index, just links new node to the chain 
+
 ### Get Function 
 ```java
 public int get(String key) {
@@ -141,6 +162,13 @@ public int get(String key) {
         return 0; 
 }
 ```
+> - **Important Notes:**
+> - Retrieves Value by Key: Searches for a key and returns its corresponding value
+> - Uses Hash Function: Calculates the index where the key might be stored
+> - Traverses Chain (if needed): If collisions occurred, loops through linked list at the index
+> - Checks for Matching Key: Compares each node’s key; returns value when found
+> - Returns Default if Not Found: Returns 0 if the key is not present in the hash map
+
 
 ## Time Complexity of Common Operations with HashMap 
 
@@ -158,17 +186,6 @@ public int get(String key) {
 | Values    | `values()` | O(1) | O(1) | Returns a Collection view of the values |
 | Replace   | `replace(K key, V value)` | O(1) | O(n) | Replaces the entry for the key |
 
-## Hash Function 
-- Hash functions (h) convert each key (k) to an integer in the range of 0 to N-1 where N is the size of the array
-- Essentially we are assigning each key to a specific index in the array
-- In more mathematical terms we say: h(k) = is an index in our array 
-- Hash function can assign multiple keys to the same index and this is called **collision** 
-- Hash functions are considered "good" if they can avoid as many collisions as possible 
-- A hash function has 2 components: (1) Hash Code --> (2) Compression Function 
 
-# Collision 
-- There are multiple ways to handle collisions: (1) Seperate Chaining (2) Linear Probing 
-- (1) Seperate Chaining - Creating a linked list at each index and having multiple key value pairs at 1 index
-- (2) Linear Probing - If index is already taken then find an empty index to add the key value pair 
 
 
