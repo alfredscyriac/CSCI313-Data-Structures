@@ -61,8 +61,8 @@ studentID.putIfAbsent("LeBron James", 23); // "LeBron James" does not exist --> 
 ```
 
 ## Application of HashMap in LeetCode Style Question 
-### Prompt: given two int arrays, determine whether or not the two arrays have an element in common 
-### Solution: 
+- Prompt: given two int arrays, determine whether or not the two arrays have an element in common 
+- Solution: 
 ```java
 public static boolean itemInCommon(int[] nums1, int[] nums2) {
     // Create a hash map to store all key which is the element and value which is true or false 
@@ -87,6 +87,26 @@ public static boolean itemInCommon(int[] nums1, int[] nums2) {
 // Time Complexity: O(n)
 ```
 
+## Building Our Own HashMap 
+- Create a file called hashmap.java (name can vary)
+
+## Time Complexity of Common Operations with HashMap 
+## Java HashMap Operations
+
+| Operation | Method | Average Case | Worst Case | Description |
+|-----------|--------|--------------|------------|-------------|
+| Put       | `put(K key, V value)` | O(1) | O(n) | Adds a key-value pair to the map |
+| Get       | `get(Object key)` | O(1) | O(n) | Returns the value for the specified key |
+| Remove    | `remove(Object key)` | O(1) | O(n) | Removes the mapping for the specified key |
+| ContainsKey | `containsKey(Object key)` | O(1) | O(n) | Returns true if map contains the key |
+| ContainsValue | `containsValue(Object value)` | O(n) | O(n) | Returns true if map contains the value |
+| Size      | `size()` | O(1) | O(1) | Returns the number of key-value pairs |
+| IsEmpty   | `isEmpty()` | O(1) | O(1) | Returns true if map contains no mappings |
+| Clear     | `clear()` | O(n) | O(n) | Removes all mappings from the map |
+| KeySet    | `keySet()` | O(1) | O(1) | Returns a Set view of the keys |
+| Values    | `values()` | O(1) | O(1) | Returns a Collection view of the values |
+| Replace   | `replace(K key, V value)` | O(1) | O(n) | Replaces the entry for the key |
+
 ## Hash Function 
 - Hash functions (h) convert each key (k) to an integer in the range of 0 to N-1 where N is the size of the array
 - Essentially we are assigning each key to a specific index in the array
@@ -100,6 +120,4 @@ public static boolean itemInCommon(int[] nums1, int[] nums2) {
 - (1) Seperate Chaining - Creating a linked list at each index and having multiple key value pairs at 1 index
 - (2) Linear Probing - If index is already taken then find an empty index to add the key value pair 
 
-## Key Characteristics 
-- **Average Time Complexity**: O(1) for search, insert, and delete 
-- **Worst Case Time Complexity**: O(n) when collisions occur 
+
