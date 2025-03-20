@@ -6,82 +6,73 @@
 - Think of a key value pair as the correlation between a student name to a student's ID
 
 ## Java's Built in HashMap
-- To use the built-in Java hasmaps first you have to import it 
-```java 
+### Initialization 
+```java
+// Import statement
 import java.util.HashMap;
+// Creating a HashMap
+HashMap<KeyDataType, ValueDataType> hashmapName = new HashMap<>();
 ```
-- To intialize it within your code 
+> **Important Notes:**
+> - Data types for key and value must NOT be primitives
+> - Use Java wrapper classes (e.g., int → Integer)
+### Example Creation
 ```java 
-HashMap<keyDataType,valueDataType> hashmapName = new HashMap<>();
+HashMap<String, Integer> studentID = new HashMap<>();
+// Key: student's name (String)
+// Value: student's ID number (Integer) 
 ``` 
-- Note: **Data types for key and value must NOT be primitives**
-- Tip: Use java wrapper classes (i.e.: int --> Integer)
-- Sample use case of hashmap:
+### Common Methods 
+#### Adding Elements to HashMap
 ```java 
-HashMap<String,Integer> studentID = new HashMap<>(); 
-``` 
-- In the case above the key is the student's name and the value is the student's ID number 
-- We can add an element to our hashmap using the .put() function 
-- Sample use case of .put(): 
-```java 
-studentID.put("Alfred",12345); 
+studentID.put("Alfred", 12345);  // O(1) time complexity 
 ```
-- The time complexity of .put() is O(1)
-- You can retrieve the value stored at a key using .get() function 
-- Sample use case of .get():
+#### Retrieving Elements from HashMap
 ```java 
-studentID.get("Alfred"); // returns 12345
+studentID.get("Alfred");  // returns 12345, O(1) time complexity
 ```
-- The time complexity of .get() is O(1)
-- You can check if the hash map currently has a key value pair with a certain key using .containsKey() function
-- Sample use case of .containsKey():
+#### Checking Contents
 ```java
-studentID.containsKey("Alfred"); // returns true 
+// Check if key exists
+studentID.containsKey("Alfred");      // returns true, O(1) time complexity
 studentID.containsKey("LeBron James"); // returns false
+
+// Check if value exists
+studentID.containsValue(12345);  // returns true, O(n) time complexity
+studentID.containsValue(00000);  // returns false
 ```
-- The complexity of .containsKey() is O(1) 
-- You can check if the hash map currently has a key value pair with a certain value using .containsValue() function
-- Sample use case of .containsValue():
+#### Modifying Elements 
 ```java
-studentID.containsValue(12345); // returns true 
-studentID.containsValue(00000); // returns false
-```
-- The complexity of .containsValue() is O(1)
-- If you use the .put() function using a key that already exists, it overides the old key value pair with that key 
-- Since we are on the topic of overiding there is a built in function that does exactly that: .replace()
-- Sample use case of .replace(): 
-```java
-studentID.replace("Alfred",54321); // changes the key "Alfred" value fro 12345 --> 54321
-```
-- If you do .replace() on a key that doesn't exist then nothing will happen at all 
-- In the case you don't know if a key already exists then there is a function for that: putIfAbsent()
-- Sample use case of .putIfAbsent(): 
-```java
-studentID.putIfAbsent("LeBron James", 23); // "LeBron James" does not exist --> added to hashmap
+// Override existing key's value
+studentID.put("Alfred", 54321);  // changes value from 12345 to 54321
+
+// Replace value only if key exists
+studentID.replace("Alfred", 54321);  // O(1) time complexity
+// Note: If the key doesn't exist, replace() does nothing
+
+// Add only if key doesn't exist
+studentID.putIfAbsent("LeBron James", 23);  // adds entry since key doesn't exist
 ```
 
 ## Application of HashMap in LeetCode Style Question 
-- Prompt: given two int arrays, determine whether or not the two arrays have an element in common 
-- Solution: 
+**Problem:** Given two int arrays, determine whether they have any element in common.
+**Solution:** 
 ```java
 public static boolean itemInCommon(int[] nums1, int[] nums2) {
-    // Create a hash map to store all key which is the element and value which is true or false 
-    HashMap<Integer,Boolean> hashmap = new HashMap<>(); 
+    // Create a hashmap to store elements from first array
+    HashMap<Integer, Boolean> hashmap = new HashMap<>(); 
 
-    // This kind of for loop makes it so i = nums[i] at each iteration 
-    // Adding each elements in the first array as a key to our hashmap and setting their value to true
+    // Add all elements from first array as keys
     for (int i : nums1) {
-        hashmap.put(i,true); 
+        hashmap.put(i, true); 
     }
 
-    // As we iterate through the second array check if a key = current element  exists in our hashmap
-    // If a key did exist then .get() would not return null 
-    // when the condition is true that means we have found an element in both nums1 and nums2 --> return true
-    for (int j: nums2) { 
-        if( hashmap.get(j) != null ) return true; 
+    // Check if any element from second array exists in hashmap
+    for (int j : nums2) { 
+        if (hashmap.get(j) != null) return true; 
     }
 
-    // If we iterate both arrays and don't find a commone element we return false
+    // No common elements found
     return false; 
 }
 // Time Complexity: O(n)
@@ -89,9 +80,69 @@ public static boolean itemInCommon(int[] nums1, int[] nums2) {
 
 ## Building Our Own HashMap 
 - Create a file called hashmap.java (name can vary)
+### Constructor 
+```java
+public class hashmap {
+    private int size = 7; 
+    private Node[] dataMap; 
+
+    class Node {
+        String key; 
+        int value; 
+        Node next; 
+        Node(String key, int value){
+            this.key=key; 
+            this.value=value; 
+        }
+    }
+
+    public hashmap() {
+        dataMap = new Node[size]; 
+    }
+}
+```
+### Hash Function
+```java
+private int hashFunction(String key) {
+        int hash = 0; 
+        char[] keyChars = key.toCharArray(); 
+        for (int i = 0; i < keyChars.length; i++) {
+            int asciivalue = keyChars[i]; 
+            hash = (hash + asciivalue * 23 ) % dataMap.length; 
+        }
+        return hash; 
+}
+```
+### Set Function
+```java 
+public void set(String key, int value) {
+        int index = hashFunction(key);
+        Node newnode = new Node(key,value); 
+        if (dataMap[index] == null) {
+            dataMap[index] = newnode; 
+        } else {
+            Node temp = dataMap[index]; 
+            while (temp.next != null) {
+                temp = temp.next; 
+            }
+            temp.next = newnode; 
+        }
+}
+```
+### Get Function 
+```java
+public int get(String key) {
+        int index = hashFunction(key); 
+        Node temp = dataMap[index]; 
+        while (temp != null ){
+            if (temp.key == key) return temp.value; 
+            temp = temp.next; 
+        }
+        return 0; 
+}
+```
 
 ## Time Complexity of Common Operations with HashMap 
-## Java HashMap Operations
 
 | Operation | Method | Average Case | Worst Case | Description |
 |-----------|--------|--------------|------------|-------------|
