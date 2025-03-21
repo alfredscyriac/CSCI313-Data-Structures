@@ -1,24 +1,6 @@
 package day_06_starter;
 
 public class LinkedList<T> {
-	//---------------------Nested Node Class---------------------//
-	@SuppressWarnings("hiding")
-	public class Node<T> {
-		private T data;
-		private Node<T> next;
-				
-		public Node(T data) {
-			this.data = data;
-			this.next = null;
-		}
-		
-//		public void setNodeData(T data) { this.data = data; }
-//		public void setNodeNext(Node<T> next) { this.next = next; }
-//		
-		public T getNodeData() { return this.data; }
-		public Node<T> getNodeNext() { return this.next; }
-	}
-	//-----------------------------------------------------------//
 	
 	private Node<T> dummyhead;
 	private Node<T> tail;
@@ -58,19 +40,16 @@ public class LinkedList<T> {
 			for(int i = 0; i < pos; i++) {
 				curr = curr.next;
 			}
-			
 			node.next = curr.next;
 			curr.next = node;
+			length++;
 		}
-		
-		
-		this.length++;
 	}
 	
 	public void removeFirst() {
 		if(this.length == 0) return;
 		this.dummyhead.next = dummyhead.next.next;
-		this.length--;
+		length--;
 	}
 	
 	public void removeLast() {
@@ -86,16 +65,14 @@ public class LinkedList<T> {
 			while(curr.next.next != null) {
 				curr = curr.next;
 			}
-		
 			curr.next = null;
 			this.tail = curr;
 		}
-		this.length--;
+		length--;
 	}
 	
 	public void removeAtPosition(int pos) {
-		
-		if(this.length == 0 || pos > this.length) {
+		if(this.length == 0 || pos >= this.length) {
 			return;
 		}
 		else if(pos == 0) {
@@ -109,20 +86,9 @@ public class LinkedList<T> {
 			for(int i = 0; i < pos; i++) {
 				curr = curr.next;
 			}
-			curr = curr.next.next;
-			this.length--;
+			curr.next = curr.next.next;
+			length--;
 		}
-		
-		
-	}
-	
-	public boolean isPresent(Node<T> n) {
-		Node<T> curr = dummyhead.next;
-		while(curr != null) {
-			if(curr == n) return true;
-			curr = curr.next;
-		}
-		return false;
 	}
 	
 	public boolean isEmpty() {
@@ -147,7 +113,7 @@ public class LinkedList<T> {
 			System.out.print(curr.data + "->");
 			curr = curr.next;
 		}
-		System.out.println(this.length);
+		System.out.println("null | size: " + this.length);
 	}
-	
 }
+

@@ -15,7 +15,7 @@ public class ChainHashMap<K,V> {
 	
 	public void put(Pair<K,V> pair) {
 		int address = pair.getKey().hashCode() % CAPACITY;
-		Node<Par<K,V>> curr = bucket[address].getFirst(); 
+		Node<Pair<K,V>> curr = bucket[address].getFirst(); 
 		while(curr!=null){
 			if(curr.data.getKey() == pair.getKey()){
 				curr.data.setValue(pair.getValue()); 
@@ -27,8 +27,16 @@ public class ChainHashMap<K,V> {
 		size++; 
 	}
 	
-	public Pair<K,V> get(){
-		return null;
+	public Pair<K,V> get(K key){
+		int address = key.hashCode() % CAPACITY;
+		Node<Pair<K,V>> curr = bucket[address].getFirst();
+		while(curr != null) {
+			if(curr.data.getKey() == key) {
+				return curr.data;
+			}
+			curr = curr.next;
+		}
+		return null; 
 	}
 	
 	public Pair<K,V> remove(){
