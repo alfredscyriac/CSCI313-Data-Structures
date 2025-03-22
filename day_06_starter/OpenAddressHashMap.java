@@ -47,14 +47,71 @@ public class OpenAddressHashMap<K,V> {
         }
 
         // Worst case iterate through the entire table to check if the key can be found at any other index 
-        // If the end of the table is reaches and we don't find it in ANY index we know it does not exist
+        // If the end of the table is reached and we don't find it in ANY index we know it does not exist
         else {
             for(int i = 0; i < table.length; i++) {
-                if(table[i].getKey() == key) {
+                if(table[i].getKey().equals(key)) {
                     return table[i];
                 }
             }
             return null; 
         }
+    }
+
+    public Pair<K,V> remove(K key) {
+        // Find what index key should be at if it was not affected by linear probing 
+        int index = hashFunc(key); 
+
+        // Check if that index does have the key we are looking for, if it does remove and return in
+        if(table[index].getKey().equals(key)) {
+            Pair<K,V> removePair = table[index]; 
+            table[index] = null; 
+            size--; 
+            return removePair; 
+        }
+
+        // Worst case iterate through the entire table to check if the key can be found at any other index
+        // If the end of the table is reached and we don't find it in ANY index we know it does not exist 
+        else {
+            for(int i =0; i<table.length; i++){
+                if(table[i].getKey().equals(key)) {
+                    Pair<K,V> removePair = table[index]; 
+                    table[index] = null; 
+                    size--; 
+                    return removePair;
+                }
+            }
+            return null;
+        }
+    }
+
+    public LinkedList<K> keySet() {
+        // Create new linked list to store all the keys at once 
+        LinkedList<K> allKeys = new LinkedList<>(); 
+
+        // Iterate through the table and every time an index is not null, append that key to linked list
+        for(int i=0; i<table.length; i++) {
+            if(table[i]!=null){
+                allKeys.insertLast(table[i].getKey());
+            }
+        }
+
+        // return linked list
+        return allKeys; 
+    }
+
+    public LinkedList<Pair<K,V>> entrySet() {
+         // Create new linked list to store all the pairs at once
+        LinkedList<Pair<K,V>> allPairs  = new LinkedList<>(); 
+
+        // Iterate through the table and every time an index is not null, append that pair to linked list
+        for(int i=0; i<table.length; i++) {
+            if(table[i]!=null){
+                allPairs.insertLast(table[i]);
+            }
+        }
+
+        // return linked list 
+        return allPairs; 
     }
 }
