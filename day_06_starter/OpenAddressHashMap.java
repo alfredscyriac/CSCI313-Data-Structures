@@ -5,7 +5,7 @@ public class OpenAddressHashMap<K,V> {
     int CAPACITY = 101; 
     Pair<K,V>[] table; 
     int size; 
-    public OpenAddressHashMap<K,V>() {
+    public OpenAddressHashMap() {
         table = new Pair[CAPACITY]; 
         size = 0; 
     } 
@@ -13,6 +13,7 @@ public class OpenAddressHashMap<K,V> {
     // Hash Function for convenience and less repititon 
     public int hashFunc(K key) {
         int hashCode = key.hashCode() % CAPACITY; 
+        return hashCode; 
     }
 
     public void put(Pair<K,V> pair){
@@ -26,6 +27,7 @@ public class OpenAddressHashMap<K,V> {
         while(table[index]!=null && size!=CAPACITY-1) {
             if(table[index].getKey().equals(key)) {
                 table[index].setValue(value);
+                return;
             }
             else {
                 index = (index + 1) % CAPACITY; 
@@ -42,7 +44,7 @@ public class OpenAddressHashMap<K,V> {
         int index = hashFunc(key); 
         
         // Check if that index does have the key we are looking for, if it does return the pair 
-        if (table[index].getKey() == key) {
+        if (table[index].getKey().equals(key)) {
             return table[index]; 
         }
 
@@ -75,7 +77,7 @@ public class OpenAddressHashMap<K,V> {
         else {
             for(int i =0; i<table.length; i++){
                 if(table[i].getKey().equals(key)) {
-                    Pair<K,V> removePair = table[index]; 
+                    Pair<K,V> removePair = table[i]; 
                     table[index] = null; 
                     size--; 
                     return removePair;

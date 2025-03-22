@@ -17,7 +17,7 @@ public class Pair <K,V> {
 		
 		public boolean equals(Object o) {
 			try {
-				Pair<K,V> pair = Pair<K,V> o;
+				Pair<K, V> pair = (Pair<K, V>) o;
 			return this.key == pair.getKey() 
 					&& this.value == pair.getValue();
 		} catch(ClassCastException e) {
