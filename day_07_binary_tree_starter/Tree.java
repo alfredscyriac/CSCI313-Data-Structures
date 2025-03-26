@@ -1,40 +1,45 @@
-package day_07_trees;
-import  day_04_lists.LinkedList;
+package day_07_binary_tree_starter;
+import java.util.LinkedList;
 
 public class Tree<E> {
 	
-	TreeNode<E> root;
-	int size;
+	Node<E> root;
+    int size;
+
+    public Tree(E rootData) {
+        root = new Node<>(rootData);
+        size = 1;
+    }
 	
-	public E element(TreeNode<E> node) {
-		if(node == null) return null;
-		return node.data;
-	}
+	public E element(Node<E> node) {
+        if (node == null) return null;
+        return node.data;
+    }
 	
-	public TreeNode<E> getParent(TreeNode<E> node) {
-		//return null if node == root
+	public Node<E> getParent(Node target) {
 		return null;
 	}
 	
-	public LinkedList<TreeNode<E>> getChildren(TreeNode<E> node) {
-		
-		return null;
+	public LinkedList<Node<E>> getChildren(Node node) {
+		LinkedList<Node<E>> children = new LinkedList<>();
+        if (node.left != null) children.add(node.left);
+        if (node.right != null) children.add(node.right);
+        return children;
 	}
 	
-	
-	public boolean isRoot(TreeNode<E> node) {
-		return false;
+	public boolean isRoot(Node node) {
+		return node == root;
 	}
 	
-	public boolean isExternal(TreeNode<E> node) {
-		return false;
+	public boolean isExternal(Node node) {
+		return node.left == null && node.right == null;
 	}
 	
-	public boolean isInternal(TreeNode<E> node) {
-		return false;
+	public boolean isInternal(Node node) {
+		return node.left != null || node.right != null;
 	}
 	
-	public int nodeDepth(TreeNode<E> node) {
+	public int nodeDepth(Node node) {
 		return 0;
 		
 	}
@@ -46,8 +51,4 @@ public class Tree<E> {
 	public int size() {
 		return 0;
 	}
-	
-	
-	
-	
 }
