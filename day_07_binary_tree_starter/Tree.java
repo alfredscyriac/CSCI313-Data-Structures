@@ -16,8 +16,20 @@ public class Tree<E> {
         return node.data;
     }
 	
-	public Node<E> getParent(Node target) {
-		return null;
+	public Node<E> getParent(Node<E> target) {
+		if(target == root || target == null || root == null) return null;  
+		LinkedList<Node<E>> list = new LinkedList<>(); 
+		list.add(root); 
+		while(!list.isEmpty()){
+			Node<E> curr = list.pop(); 
+			if ( curr.left == target || curr.right == target ) {
+				return curr; 
+			}
+
+			if (curr.left != null) list.add(curr.left); 
+			if (curr.right != null) list.add(curr.right); 
+		}
+		return null; 
 	}
 	
 	public LinkedList<Node<E>> getChildren(Node node) {
