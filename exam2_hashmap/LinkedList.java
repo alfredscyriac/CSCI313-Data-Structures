@@ -1,9 +1,9 @@
 package exam2_hashmap;
 
 public class LinkedList<T> {
-    private Node<T> dummyhead; 
-    private Node<T> tail; 
-    private int length;
+    Node<T> dummyhead; 
+    Node<T> tail; 
+    int length;
     
     public LinkedList() {
         dummyhead = new Node<>(null); 

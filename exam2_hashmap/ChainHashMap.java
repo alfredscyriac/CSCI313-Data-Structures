@@ -37,5 +37,21 @@ public class ChainHashMap<K,V> {
         return hash; 
     }
 
+    public void put(Pair<K,V> pair) {
+        int address = hashfunction(pair.getKey());
+
+        Node<Pair<K,V>> curr = arr[address].getFirst().next; 
+
+        while(curr != null ) {
+            if(curr.data.getKey().equals(pair.getKey())) {
+                curr.data.setValue(pair.getValue());
+            }
+            curr = curr.next; 
+        }
+
+        arr[address].insertLast(pair);
+        size++; 
+    }
+
     
 }

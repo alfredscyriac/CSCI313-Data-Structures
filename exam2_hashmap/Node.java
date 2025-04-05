@@ -1,7 +1,7 @@
 package exam2_hashmap;
 
 public class Node<T> {
-    private T data; 
+    T data; 
     Node<T> next; 
 
     public Node(T data) {
