@@ -5,21 +5,10 @@ public class ChainHashMap<K,V> {
     private LinkedList<Pair<K,V>>[] bucket; 
     private int size; 
 
-    // Default constructor 
     @SuppressWarnings("unchecked")
     public ChainHashMap() {
         bucket = (LinkedList<Pair<K, V>>[]) new LinkedList[capacity];
         for (int i = 0; i < capacity; i++) {
-            bucket[i] = new LinkedList<Pair<K, V>>();
-        }
-        size = 0;
-    }
-
-    // Custom capacity constructor 
-    @SuppressWarnings("unchecked")
-    public ChainHashMap(int customcapacity) {
-        bucket = (LinkedList<Pair<K, V>>[]) new LinkedList[customcapacity];
-        for (int i = 0; i < customcapacity; i++) {
             bucket[i] = new LinkedList<Pair<K, V>>();
         }
         size = 0;
@@ -74,8 +63,6 @@ public class ChainHashMap<K,V> {
 
         LinkedList<Pair<K, V>> currBucket = bucket[address]; 
 
-        if(currBucket.isEmpty()) return null; 
-
         Node<Pair<K,V>> prevNode = currBucket.dummyhead;
         Node<Pair<K,V>> currNode = prevNode.next; 
 
@@ -96,5 +83,31 @@ public class ChainHashMap<K,V> {
         return null; 
     }
 
-    
+    public LinkedList<K> keySet() {
+        LinkedList<K> keyset = new LinkedList<>(); 
+
+        for(int i = 0; i < bucket.length; i++) {
+            Node<Pair <K,V>> curr = bucket[i].dummyhead.next; 
+            while(curr != null) {
+                keyset.insertLast(curr.data.getKey());
+                curr = curr.next; 
+            }
+        }
+
+        return keyset; 
+    }
+
+    public LinkedList<Pair<K,V>> entrySet() {
+        LinkedList<Pair <K,V>> entryset = new LinkedList<>(); 
+
+        for(int i = 0; i < bucket.length; i++) {
+            Node<Pair <K,V>> curr = bucket[i].dummyhead.next; 
+            while(curr != null) {
+                entryset.insertLast(curr.data);
+                curr = curr.next; 
+            }
+        }
+
+        return entryset; 
+    }
 }
