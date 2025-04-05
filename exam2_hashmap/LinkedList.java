@@ -53,5 +53,35 @@ public class LinkedList<T> {
     public int getLength() {
         return length; 
     }
+
+    public void removeFirst() {
+        if(isEmpty()) return; 
+        dummyhead.next = dummyhead.next.next;
+        length--; 
+        if (length==0) tail = dummyhead;  
+    }
+
+    public void removeLast() {
+        if(isEmpty()) return;
+
+        Node<T> prev = dummyhead; 
+        while (prev.next != tail) {
+            prev = prev.next; 
+        }
+        prev.next = null; 
+        tail = prev; 
+        length--; 
+    }
+
+    public void removeAtPosition(int position) {
+        if(position < 0 || position >= length) throw new IndexOutOfBoundsException();
+        Node<T> prev = dummyhead; 
+        for(int i = 0; i < position; i++) {
+            prev = prev.next;
+        }
+        if(prev.next == tail) tail = prev; 
+        prev.next = prev.next.next; 
+        length--; 
+    }
     
 }
