@@ -37,5 +37,21 @@ public class LinkedList<T> {
         if(newnode.next == null) tail = newnode; 
         length++; 
     }
+
+    public boolean isEmpty() {
+        return length == 0; 
+    }
+
+    public Node<T> getFirst() {
+        return isEmpty() ? null : dummyhead.next; 
+    }
+
+    public Node<T> getLast() {
+        return isEmpty() ? null : tail; 
+    }
+
+    public int getLength() {
+        return length; 
+    }
     
 }
