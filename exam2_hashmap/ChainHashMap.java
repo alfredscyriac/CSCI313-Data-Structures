@@ -53,5 +53,20 @@ public class ChainHashMap<K,V> {
         size++; 
     }
 
+    public Pair<K,V> get(K key) {
+        int address = hashfunction(key); 
+
+        Node<Pair<K,V>> curr = arr[address].getFirst().next;
+
+        while (curr != null) {
+            if(curr.data.getKey().equals(key)) {
+                return curr.data;
+            }
+            curr = curr.next; 
+        }
+
+        return null; 
+    }
+
     
 }
