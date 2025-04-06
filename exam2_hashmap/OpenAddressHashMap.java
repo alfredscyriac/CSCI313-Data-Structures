@@ -4,13 +4,11 @@ import javax.management.RuntimeErrorException;
 
 public class OpenAddressHashMap<K,V> {
     int capacity = 101; 
-    Pair<K,V>[] bucket; 
-    boolean[] isDeleted;
+    Pair<K,V>[] bucket;
     int size; 
 
     public OpenAddressHashMap() {
-        bucket = new Pair[capacity]; 
-        isDeleted = new boolean[capacity];
+        bucket = new Pair[capacity];
         size = 0; 
     }
 
@@ -50,18 +48,16 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public Pair<K,V> get(K key) {
-        int address = key.hashCode() % capacity;
-	    int count = -1;
-	    int curAddress = address;
-	    while (count < 1) {
-		    if (curAddress == address) {
-			    count++;
-		    }
-		    if (bucket[curAddress] != null && bucket[curAddress].getKey().equals(key)) {
-			    return bucket[curAddress];
-		    }
-		    curAddress = (curAddress + 1) % capacity;
-	    }
+        int address = hashfunction(key);
+	    
+        for (int i = 0; i < capacity; i++) {
+            int probe = (address + i) % capacity;
+    
+            if (bucket[probe] != null && bucket[probe].getKey().equals(key)) {
+                return bucket[probe];
+            }
+        }
+
 	    return null;
     }
 
