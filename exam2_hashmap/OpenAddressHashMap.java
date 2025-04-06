@@ -50,21 +50,19 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public Pair<K,V> get(K key) {
-        int address = hashfunction(key); 
-        int start = address; 
-
-        while(bucket[address] != null) {
-            if(bucket[address].getKey().equals(key)) {
-                return bucket[address]; 
-            }
-
-            address = (address + 1) % capacity;
-
-            if(address == start) break; 
-        }
-
-        return null; 
-        
+        int address = key.hashCode() % capacity;
+	    int count = -1;
+	    int curAddress = address;
+	    while (count < 1) {
+		    if (curAddress == address) {
+			    count++;
+		    }
+		    if (bucket[curAddress] != null && bucket[curAddress].getKey().equals(key)) {
+			    return bucket[curAddress];
+		    }
+		    curAddress = (curAddress + 1) % capacity;
+	    }
+	    return null;
     }
 
     public Pair<K,V> remove(K key) {
@@ -99,6 +97,13 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public LinkedList<Pair<K,V>> entrySet() {
+        LinkedList<Pair<K, V>> allPairs = new LinkedList<>();
+        for (int i = 0; i < capacity; i++) {
+            if (bucket[i] != null) {
+                allPairs.insertLast(bucket[i]);
+            }
+        }
+        return allPairs;
 
     }    
 }
