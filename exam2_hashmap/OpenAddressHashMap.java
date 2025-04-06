@@ -89,7 +89,13 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public LinkedList<K> keySet() {
-
+        LinkedList<K> keyset = new LinkedList<>();
+        for (int i = 0; i < capacity; i++) {
+            if (bucket[i] != null) {
+                keyset.insertLast(bucket[i].getKey());
+            }
+        }
+        return keyset;
     }
 
     public LinkedList<Pair<K,V>> entrySet() {
