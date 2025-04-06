@@ -68,6 +68,23 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public Pair<K,V> remove(K key) {
+        int address = hashfunction(key); 
+        int start = address; 
+
+        while (bucket[address] != null) {
+            if (bucket[address].getKey().equals(key)) {
+                Pair<K, V> removed = bucket[address];
+                bucket[address] = null;
+                size--;
+                return removed;
+            }
+
+            address = (address + 1) % capacity;
+            
+            if (address == start) break;
+        }
+
+        return null;
 
     }
 
