@@ -1,5 +1,7 @@
 package exam2_hashmap;
 
+import javax.management.RuntimeErrorException;
+
 public class OpenAddressHashMap<K,V> {
     int capacity = 101; 
     Pair<K,V>[] bucket; 
@@ -23,6 +25,23 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public void put(Pair<K,V> pair) {
+        K key = pair.getKey(); 
+        int address = hashfunction(key); 
+
+        for(int i = 0; i < capacity; i++) {
+            int probe = (address + i) % capacity; 
+
+            if(bucket[probe] == null) {
+                bucket[probe] = pair; 
+                size++; 
+                return; 
+            }
+            else if(bucket[probe].getKey().equals(key)) {
+                bucket[probe] = pair; 
+                return; 
+            }
+        }
+        throw new RuntimeException("HashMap is full. Remove pairs and try again.");
 
     }
 
