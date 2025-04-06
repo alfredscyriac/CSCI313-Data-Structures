@@ -30,7 +30,6 @@ public class OpenAddressHashMap<K,V> {
         K key = pair.getKey();
         V value = pair.getValue();
         int address = hashfunction(key);
-        int start = address;
 
         while (bucket[address] != null) {
             if(bucket[address].getKey().equals(key)) {
