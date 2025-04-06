@@ -1,5 +1,6 @@
 package exam2_binarytree;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class BinaryTree<E> {
 	
@@ -16,7 +17,19 @@ public class BinaryTree<E> {
 	}
 	
 	public Node<E> getParent(Node<E> node) {
-		
+		if(node == root || node == null || root == null) return null;  
+		LinkedList<Node<E>> list = new LinkedList<>(); 
+		list.add(root); 
+		while(!list.isEmpty()){
+			Node<E> curr = list.remove(); 
+			if ( curr.left == node || curr.right == node ) {
+				return curr; 
+			}
+
+			if (curr.left != null) list.add(curr.left); 
+			if (curr.right != null) list.add(curr.right); 
+		}
+		return null; 
 	}
 	
 	public LinkedList<Node<E>> getChildren(Node<E> node) {
@@ -42,15 +55,15 @@ public class BinaryTree<E> {
 	public int nodeDepth(Node<E> node) {
 		return nodeDepthHelper(root, node, 0);
 	}
-	
-	private int nodeDepth(Node<E> current, Node<E> target, int depth) {
+
+	private int nodeDepthHelper(Node<E> current, Node<E> target, int depth) {
 		if (current == null) return -1;
 		if (current == target) return depth;
 	
-		int left = nodeDepth(current.left, target, depth + 1);
+		int left = nodeDepthHelper(current.left, target, depth + 1);
 		if (left != -1) return left;
 	
-		return nodeDepth(current.right, target, depth + 1);
+		return nodeDepthHelper(current.right, target, depth + 1);
 	}
 	
 	public int treeHeight() {
