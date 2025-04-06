@@ -26,9 +26,8 @@ public class BinaryTree<E> {
 		return children; 
 	}
 	
-	
 	public boolean isRoot(Node<E> node) {
-		
+		return node == root; 
 	}
 	
 	public boolean isExternal(Node<E> node) {
