@@ -5,10 +5,12 @@ import javax.management.RuntimeErrorException;
 public class OpenAddressHashMap<K,V> {
     int capacity = 101; 
     Pair<K,V>[] bucket; 
+    boolean[] isDeleted;
     int size; 
 
     public OpenAddressHashMap() {
         bucket = new Pair[capacity]; 
+        isDeleted = new boolean[capacity];
         size = 0; 
     }
 
@@ -25,43 +27,44 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public void put(Pair<K,V> pair) {
-        K key = pair.getKey(); 
-        int address = hashfunction(key); 
+        K key = pair.getKey();
+        V value = pair.getValue();
+        int address = hashfunction(key);
+        int start = address;
 
-        for(int i = 0; i < capacity; i++) {
-            int probe = (address + i) % capacity; 
-
-            if(bucket[probe] == null) {
-                bucket[probe] = pair; 
-                size++; 
+        while (bucket[address] != null) {
+            if(bucket[address].getKey().equals(key)) {
+                bucket[address].setValue(value); 
                 return; 
             }
-            else if(bucket[probe].getKey().equals(key)) {
-                bucket[probe] = pair; 
-                return; 
+            
+            address = (address + 1) % capacity;
+
+            if (address == start) {
+                throw new RuntimeException("HashMap is full");
             }
         }
-        throw new RuntimeException("HashMap is full. Remove pairs and try again.");
 
+        bucket[address] = pair;
+        size++;
     }
 
     public Pair<K,V> get(K key) {
         int address = hashfunction(key); 
+        int start = address; 
 
-        for(int i = 0; i < capacity; i++){
-            int probe = (address + i) % capacity;
-
-            if(bucket[probe] == null) {
-                return null; 
+        while(bucket[address] != null) {
+            if(bucket[address].getKey().equals(key)) {
+                return bucket[address]; 
             }
 
-            else if (bucket[probe].getKey().equals(key)) {
-                return bucket[probe]; 
-            }
+            address = (address + 1) % capacity;
 
+            if(address == start) break; 
         }
 
         return null; 
+        
     }
 
     public Pair<K,V> remove(K key) {
