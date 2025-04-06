@@ -31,6 +31,7 @@ public class BinaryTree<E> {
 	}
 	
 	public boolean isExternal(Node<E> node) {
+		return node.right == null && node.left == null; 
 		
 	}
 	
