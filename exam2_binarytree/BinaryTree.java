@@ -40,7 +40,17 @@ public class BinaryTree<E> {
 	}
 	
 	public int nodeDepth(Node<E> node) {
-		
+		return nodeDepthHelper(root, node, 0);
+	}
+	
+	private int nodeDepth(Node<E> current, Node<E> target, int depth) {
+		if (current == null) return -1;
+		if (current == target) return depth;
+	
+		int left = nodeDepth(current.left, target, depth + 1);
+		if (left != -1) return left;
+	
+		return nodeDepth(current.right, target, depth + 1);
 	}
 	
 	public int treeHeight() {
