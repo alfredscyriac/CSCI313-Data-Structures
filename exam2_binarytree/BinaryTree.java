@@ -44,10 +44,15 @@ public class BinaryTree<E> {
 	}
 	
 	public int treeHeight() {
-		
+		return treeHeightHelper(root);
+	}
+
+	private int treeHeightHelper(Node<E> node) {
+		if (node == null) return -1;
+		return 1 + Math.max(treeHeightHelper(node.left), treeHeightHelper(node.right));
 	}
 	
 	public int size() {
-		
+		return size;
 	}
 }
