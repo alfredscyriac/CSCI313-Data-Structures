@@ -11,7 +11,15 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public int hashfunction(K key) {
+        int hash = 0; 
+        char[] keyChars = key.toString().toCharArray(); 
+        
+        for(int i = 0; i < keyChars.length; i++) {
+            int asciiValue = keyChars[i]; 
+            hash = (hash + asciiValue * 23) % capacity; 
+        }
 
+        return hash; 
     }
 
     public void put(Pair<K,V> pair) {
@@ -31,9 +39,6 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public LinkedList<Pair<K,V>> entrySet() {
-        
-    }
 
-
-    
+    }    
 }
