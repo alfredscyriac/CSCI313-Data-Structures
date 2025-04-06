@@ -1,4 +1,5 @@
 package exam2_binarytree;
+import java.util.LinkedList;
 
 public class BinaryTree<E> {
 	
@@ -19,7 +20,10 @@ public class BinaryTree<E> {
 	}
 	
 	public LinkedList<Node<E>> getChildren(Node<E> node) {
-		
+		LinkedList<Node<E>> children = new LinkedList<>(); 
+		if(node.left != null) children.addLast(node.left); 
+		if(node.right != null) children.addLast(node.right);
+		return children; 
 	}
 	
 	
