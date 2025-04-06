@@ -1,7 +1,5 @@
 package exam2_hashmap;
 
-import javax.management.RuntimeErrorException;
-
 public class OpenAddressHashMap<K,V> {
     int capacity = 101; 
     Pair<K,V>[] bucket;
@@ -25,6 +23,10 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public void put(Pair<K,V> pair) {
+        if (size == capacity) {
+            resize();
+        }
+
         K key = pair.getKey();
         V value = pair.getValue();
         int address = hashfunction(key);
@@ -102,4 +104,19 @@ public class OpenAddressHashMap<K,V> {
         return allPairs;
 
     }    
+
+    private void resize() {
+        int oldcapacity = capacity; 
+        capacity = capacity * 2; 
+        Pair<K, V>[] oldBucket = bucket;
+
+        bucket = new Pair[capacity]; 
+        size = 0; 
+
+        for (int i = 0; i < oldcapacity; i++) {
+            if (oldBucket[i] != null) {
+                put(oldBucket[i]);
+            }
+        }
+    }
 }
