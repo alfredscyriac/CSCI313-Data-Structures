@@ -46,7 +46,22 @@ public class OpenAddressHashMap<K,V> {
     }
 
     public Pair<K,V> get(K key) {
+        int address = hashfunction(key); 
 
+        for(int i = 0; i < capacity; i++){
+            int probe = (address + i) % capacity;
+
+            if(bucket[probe] == null) {
+                return null; 
+            }
+
+            else if (bucket[probe].getKey().equals(key)) {
+                return bucket[probe]; 
+            }
+
+        }
+
+        return null; 
     }
 
     public Pair<K,V> remove(K key) {
