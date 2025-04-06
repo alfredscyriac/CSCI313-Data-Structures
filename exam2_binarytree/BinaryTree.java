@@ -1,10 +1,15 @@
 package exam2_binarytree;
 
-public class Tree<E> {
+public class BinaryTree<E> {
 	
 	Node<E> root;
 	int size;
 	
+    public BinaryTree(E rootData) {
+		root = new Node<>(rootData); 
+		size = 1;
+    }
+
 	public E element(Node<E> node) {
 		
 	}
