@@ -36,7 +36,7 @@ public class BinaryTree<E> {
 	}
 	
 	public boolean isInternal(Node<E> node) {
-		
+		return node.right != null || node.left != null;  
 	}
 	
 	public int nodeDepth(Node<E> node) {
