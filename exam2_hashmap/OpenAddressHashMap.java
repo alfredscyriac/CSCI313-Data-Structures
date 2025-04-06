@@ -39,10 +39,6 @@ public class OpenAddressHashMap<K,V> {
             }
             
             address = (address + 1) % capacity;
-
-            if (address == start) {
-                throw new RuntimeException("HashMap is full");
-            }
         }
 
         bucket[address] = pair;
