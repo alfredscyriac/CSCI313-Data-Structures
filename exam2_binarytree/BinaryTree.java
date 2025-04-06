@@ -11,7 +11,7 @@ public class BinaryTree<E> {
     }
 
 	public E element(Node<E> node) {
-		
+		return node.data; 
 	}
 	
 	public Node<E> getParent(Node<E> node) {
