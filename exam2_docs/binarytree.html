@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Binary Trees - Data Structures Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="back-link">
+                <a href="index.html">← Back to Main Page</a>
+            </div>
+            <h1>Binary Tree</h1>
+            <p class="subtitle">An in-depth explanation of BinaryTree.java with method-level walkthroughs</p>
+        </header>
+    <div class="content">
+        <section class="intro">
+            <h2>Overview</h2>
+            <p>For a tree to be a binary tree, each node must only have at most 2 nodes. We define 
+                our node in Node.java as having a generic data type, with two pointers: 1 to a left child, and
+                the other to a right child. At the top of our binary tree is a root and we know it is the root 
+                because it has no parent. Internal nodes mean the node has at least 1 child. External nodes 
+                have no children. In this documentation we will cover the constructor of a binary tree
+                as well as the following methods: element(), getParent(), getChildren(), isRoot(), isInternal(),
+                isExternal(), nodeDepth(), treeHeight(), size(), breadthFirstTraversal(), dfsInorderTraversal(),
+                dfsPreorderTraversal(), and dfsPostorderTraversal().
+            </p>
+        </section>
+
+        <!-- Start of constructor method-->
+        <div class="method">
+            <div class="method-header">
+                <h3>Constructor</h3>
+            </div>
+            <pre class="code">
+public class BinaryTree<E> {
+    Node<E> root;
+    int size;
+    public BinaryTree(E rootData) {
+        root = new Node<>(rootData); 
+        size = 1;
+    }
+}</pre>
+            <div class="explanation">
+                <div class="flow-diagram">
+                    When we call for the creation of a binary tree it must have at least one node. 
+                    The first and highest node in a binary tree is the root. Thus we just create a node 
+                    to be the root of the binary tree. Since the intialization of the binary tree only has 
+                    one node, we can also intialize it's size to be 1.  
+                </div>
+            </div>
+        </div>
+        <!-- End of constructor method  -->
+
+        <!-- Start of element()  -->
+        <div class="method">
+            <div class="method-header">
+                <h3>Getting the data of a node</h3>
+            </div>
+            <pre class="code">
+public E element(Node<E> node) {
+    return node.data; 
+}</pre>
+            <div class="explanation">
+                <div class="flow-diagram">
+                    The parameter gives us access to the node the user wants to get the data of. Thus, 
+                    we could simply return node.data.  
+                </div>
+            </div>
+        </div>
+        <!-- End of element()  -->
+
+        <!-- Start of getParent()-->
+        <div class="method">
+            <div class="method-header">
+              <h3>getParent()</h3>
+            </div>
+          
+            <pre class="code">
+          public Node&lt;E&gt; getParent(Node&lt;E&gt; node) {
+              if (node == root || node == null || root == null) return null;
+          
+              LinkedList&lt;Node&lt;E&gt;&gt; list = new LinkedList&lt;&gt;();
+              list.add(root);
+          
+              while (!list.isEmpty()) {
+                  Node&lt;E&gt; curr = list.remove();
+          
+                  if (curr.left == node || curr.right == node) {
+                      return curr;
+                  }
+          
+                  if (curr.left != null) list.add(curr.left);
+                  if (curr.right != null) list.add(curr.right);
+              }
+          
+              return null;
+          }</pre>
+          
+            <div class="explanation">
+              <h4>How This Works:</h4>
+              <p>This method finds and returns the <strong>parent node</strong> of the given node. Since nodes don’t have a built-in parent reference, we use <strong>level-order traversal</strong> (BFS) starting from the root to locate it.</p>
+          
+              <div class="flow-diagram">
+                <strong>Algorithm Flow:</strong>
+                <ol>
+                  <li>Check if the node is <code>null</code> or the <code>root</code>. If so, return <code>null</code> — the root has no parent.</li>
+                  <li>Create a queue (LinkedList) and enqueue the root.</li>
+                  <li>While the queue is not empty:
+                    <ul>
+                      <li>Dequeue the front node (<code>curr</code>).</li>
+                      <li>If <code>curr.left</code> or <code>curr.right</code> is the node we're looking for, return <code>curr</code> — it's the parent.</li>
+                      <li>Otherwise, enqueue the left and right children if they exist.</li>
+                    </ul>
+                  </li>
+                  <li>If traversal ends with no match, return <code>null</code>.</li>
+                </ol>
+              </div>
+          
+              <h4>Why Level-Order?</h4>
+              <p>This method avoids recursion and stack overflow issues by scanning nodes breadth-first. It efficiently searches layer by layer, which is especially useful in wide trees.</p>
+          
+              <h4>Real Example:</h4>
+              <pre>
+          Tree:
+                A
+               / \
+              B   C
+             / \
+            D   E
+          
+          getParent(D) → B
+          getParent(E) → B
+          getParent(B) → A
+          getParent(A) → null
+              </pre>
+          
+              <h4>Edge Cases:</h4>
+              <ul>
+                <li><strong>null node:</strong> returns <code>null</code></li>
+                <li><strong>root node:</strong> returns <code>null</code> because root has no parent</li>
+                <li><strong>Node not found in tree:</strong> returns <code>null</code></li>
+              </ul>
+          
+              <h4>Time Complexity:</h4>
+              <p><span class="tag complexity">O(n)</span> — where <code>n</code> is the number of nodes in the tree, since we may need to check each one.</p>
+            </div>
+          </div>
+        <!-- End of getParent()-->
+
+    </div>
+
+    <footer>
+      <div class="back-to-top">
+        <a href="#top">↑ Back to Top</a>
+      </div>
+      <div class="back-link">
+        <a href="index.html">← Back to Main Page</a>
+      </div>
+      <p>Created for CSCI 313 - Spring 2025</p>
+    </footer>
+  </div>
+</body>
+</html>
+
+
+
+

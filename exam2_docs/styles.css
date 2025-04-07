@@ -131,7 +131,7 @@
   
   /* Method styling */
   .method {
-    background-color: #ffffff;
+    background-color: #dedede;
     margin: 2rem 0;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -140,7 +140,7 @@
   
   .method-header {
     padding: 1.2rem 1.5rem;
-    background: #f8fafc;
+    background: #dedede;
     border-bottom: 1px solid #e2e8f0;
   }
   
@@ -231,10 +231,6 @@
   
   footer .back-to-top a:hover {
     text-decoration: underline;
-  }
-
-  a {
-    color: white;
   }
   
   /* Responsive adjustments */
