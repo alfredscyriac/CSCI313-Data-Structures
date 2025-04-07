@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Maps - Data Structures Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="back-link">
+                <a href="index.html">← Back to Main Page</a>
+            </div>
+            <h1>Hash Maps</h1>
+            <p class="subtitle">Implementation details and algorithm analysis</p>
+        </header>
+
+        <div class="content">
+            <section class="intro">
+                <h2>Overview</h2>
+                <p>Hash maps (also known as hash tables) provide efficient key-value storage with constant-time average case operations. This implementation uses separate chaining for collision resolution, where multiple entries that hash to the same index are stored in a linked list.</p>
+            </section>
+
+            <div class="method">
+                <div class="method-header">
+                    <h3>put() Method</h3>
+                </div>
+                <div class="code">public V put(K key, V value)</div>
+                
+                <div class="explanation">
+                    <h4>How This Works:</h4>
+                    <p>The put method is responsible for inserting or updating key-value pairs in the hash map. It handles hash calculation, index mapping, and collision management.</p>
+                    
+                    <div class="flow-diagram">
+                        <strong>Algorithm Flow:</strong>
+                        <ol>
+                            <li>Calculate hash code for the key using <code>key.hashCode()</code></li>
+                            <li>Map hash to an index in the underlying array using <code>hash % table.length</code></li>
+                            <li>Check if key already exists in the bucket (linked list) at that index</li>
+                            <li>If exists, update value and return old value</li>
+                            <li>If not, add new entry to bucket</li>
+                            <li>Increment size and check load factor</li>
+                            <li>Resize and rehash if load factor exceeds threshold</li>
+                        </ol>
+                    </div>
+                    
+                    <h4>Implementation Details:</h4>
+                    <p>The hash function implementation includes a bit manipulation technique to reduce clustering:</p>
+                    <pre class="code">
+int hash = key.hashCode();
+hash = hash ^ (hash >>> 16); // Mixing higher bits into lower bits
+int index = hash & (table.length - 1); // Equivalent to hash % table.length when length is power of 2</pre>
+                    
+                    <h4>Example Walkthrough:</h4>
+                    <p>For a hash map with capacity=16, adding key="student1", value=95:</p>
+                    <ul>
+                        <li>hashCode for "student1" = 1282140982</li>
+                        <li>After bit manipulation: 1282107430</li>
+                        <li>index = 1282107430 & 15 = 6</li>
+                        <li>New Entry(student1, 95) added to bucket at index 6</li>
+                        <li>size increments to 1</li>
+                        <li>load factor = 1/16 = 0.0625 (no resize needed)</li>
+                    </ul>
+                    
+                    <h4>Performance Analysis:</h4>
+                    <p><span class="tag complexity">O(1)</span> average case for insertion when hash function distributes keys uniformly</p>
+                    <p><span class="tag complexity">O(n)</span> worst case when many keys hash to the same index, causing linear search through a bucket</p>
+                    
+                    <h4>Common Edge Cases:</h4>
+                    <ul>
+                        <li>Handling null keys (typically stored at index 0)</li>
+                        <li>Managing collisions when different keys produce the same hash value</li>
+                        <li>Ensuring proper rehashing when the table grows</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- More methods would go here -->
+            
+        </div>
+
+        <footer>
+            <div class="back-to-top">
+                <a href="#top">↑ Back to Top</a>
+            </div>
+            <div class="back-link">
+                <a href="index.html">← Back to Main Page</a>
+            </div>
+            <p>Created for Data Structures Course - Spring 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
