@@ -98,6 +98,7 @@ public class BinaryTree<E> {
 	// Left --> Root --> Right
 	public void dfsInorderTraversal(Node<E> node) {
 		if(node == null) return; 
+
 		dfsInorderTraversal(node.left); 
 		System.out.print(node.data + " ");
 		dfsInorderTraversal(node.right);
@@ -112,5 +113,12 @@ public class BinaryTree<E> {
 		dfsInorderTraversal(node.right);
 	}
 
+	// Left --> Right --> Root
+	public void dfsPostorderTraversal(Node<E> node) {
+		if(node == null) return; 
 
+		dfsPostorderTraversal(node.left);
+		dfsPostorderTraversal(node.right);
+		System.out.println(node.data + " ");
+	}
 }
