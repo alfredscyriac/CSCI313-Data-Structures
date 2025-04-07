@@ -103,5 +103,14 @@ public class BinaryTree<E> {
 		dfsInorderTraversal(node.right);
 	}
 
+	// Root --> Left --> Right
+	public void dfsPreorderTraversal(Node<E> node) {
+		if(node == null) return; 
+
+		System.out.println(node.data + " "); 
+		dfsPreorderTraversal(node.left);
+		dfsInorderTraversal(node.right);
+	}
+
 
 }
