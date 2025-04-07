@@ -79,6 +79,7 @@ public class BinaryTree<E> {
 		return size;
 	}
 
+	// Level by level
 	public void breadthFirstTraversal() {
 		if(root == null) return; 
 
@@ -93,4 +94,14 @@ public class BinaryTree<E> {
 		}
 		System.out.println();
 	}
+
+	// Left --> Root --> Right
+	public void dfsInorderTraversal(Node<E> node) {
+		if(node == null) return; 
+		dfsInorderTraversal(node.left); 
+		System.out.print(node.data + " ");
+		dfsInorderTraversal(node.right);
+	}
+
+
 }
