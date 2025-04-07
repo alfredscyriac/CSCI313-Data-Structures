@@ -78,4 +78,19 @@ public class BinaryTree<E> {
 	public int size() {
 		return size;
 	}
+
+	public void breadthFirstTraversal() {
+		if(root == null) return; 
+
+		Queue<Node<E>> queue = new LinkedList<>(); 
+		queue.add(root); 
+
+		while(!queue.isEmpty()) {
+			Node<E> current = queue.poll();
+			System.out.print(current.data + " ");
+			if (current.left != null) queue.add(current.left);
+			if (current.right != null) queue.add(current.right);
+		}
+		System.out.println();
+	}
 }
