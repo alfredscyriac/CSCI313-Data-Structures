@@ -24,11 +24,16 @@ public class BST {
     }
 
     public Node search(int x) {
-
+        return searchHelper(root, x);
     }
 
     public Node searchHelper(Node node, int x) {
+        if(node == null) return null; 
 
+        if(node.data == x) return node; 
+
+        if(x > node.data) return searchHelper(node.right,x); 
+        else return searchHelper(node.left, x);        
     }
 
     public Node delete(int x) {
