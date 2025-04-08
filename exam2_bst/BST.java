@@ -45,7 +45,8 @@ public class BST {
     }
 
     public int maxValue(Node node) {
-
+        if(node.right == null) return node.data; 
+        else return maxValue(node.right); 
     }
     
 }
