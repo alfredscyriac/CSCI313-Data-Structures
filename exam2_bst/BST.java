@@ -13,7 +13,7 @@ public class BST {
     }
 
     public void insertHelper(Node node, int x) {
-        if(x >= node.data) {
+        if(x > node.data) {
             if(node.right == null) node.right = new Node(x); 
             else insertHelper(node.right, x);
         }
@@ -37,13 +37,37 @@ public class BST {
     }
 
     public Node delete(int x) {
-
+        return deleteHelper(root,x); 
     }
 
     public Node deleteHelper(Node node, int x) {
-
+        if (node == null) return null;
+    
+        if (x < node.data) {
+            node.left = deleteHelper(node.left, x);
+        } else if (x > node.data) {
+            node.right = deleteHelper(node.right, x);
+        } else {
+            // Case 1: Leaf node
+            if (node.left == null && node.right == null) {
+                return null;
+            }
+            // Case 2: One child
+            else if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
+            }
+            // Case 3: Two children
+            else {
+                node.data = maxValue(node.left);
+                node.left = deleteHelper(node.left, node.data);
+            }
+        }
+    
+        return node;
     }
-
+    
     public int maxValue(Node node) {
         if(node.right == null) return node.data; 
         else return maxValue(node.right); 

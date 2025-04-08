@@ -5,7 +5,6 @@ public class ChainHashMap<K,V> {
     private LinkedList<Pair<K,V>>[] bucket; 
     private int size; 
 
-    @SuppressWarnings("unchecked")
     public ChainHashMap() {
         bucket = (LinkedList<Pair<K, V>>[]) new LinkedList[capacity];
         for (int i = 0; i < capacity; i++) {
