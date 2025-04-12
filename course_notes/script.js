@@ -122,19 +122,44 @@ public static int binarySearch(int[] arr, int target) {
                 content: `
                     <div class="subtopic-section">
                         <h3>Introduction to Linked Lists</h3>
-                        <p>A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node in the sequence.</p>
+                        <p>A linked list is a dynamic data structure where elements are stored in nodes, 
+                        and each node points to the next node in the sequence. Linked list commonly have 
+                        a 'head' which incidates the first node in the linked list, a 'tail' which indicates
+                        the last node in the linked list, and an int 'size' to represent how many total nodes 
+                        are in the entire linked list. When we make our own implementation of the linked list,
+                        instead of having a 'head' instance we will have a 'dummyhead.' A dummyhead is simply
+                        a node that carrys a null value meaning it isn't considered to be a part of the 
+                        linked list, but it allows us to make our methods for the linked list class 
+                        in a much easier way. With that logic the real 'first'node  of the linked list is the 
+                        node following the dummyhead. </p>
                         
-                        <h4>Key Characteristics:</h4>
+                        <h4>Key Characteristics of Linked List:</h4>
                         <ul>
-                            <li>Dynamic size</li>
-                            <li>Efficient insertions and deletions</li>
-                            <li>No random access</li>
-                            <li>More memory overhead than arrays</li>
+                            <li>Pro: Dynamic sizing (meaning our list can smaller and larger unlike arrays)</li>
+                            <li>Pro: Efficient insertions and deletions</li>
+                            <li>Con: No random access</li>
+                        </ul>
+
+                        <h4>Big-O / Time Complexity of Linked List Methods:</h4>
+                        <ul>
+                            <li>Inset First: O(1)</li>
+                            <li>Insert Last: O(1)</li>
+                            <li>Delete First: O(1)</li>
+                            <li>Delete Last: O(n)</li>
+                            <li>Search for Value: O(n)</li>
+                            <li>Access by Index: O(n)</li>
+                            <li>Insert at Index: O(n)</li>
+                            <li>Delete at Index: O(n)</li>
                         </ul>
                         
                         <div class="diagram">
-                            <img src="/api/placeholder/650/200" alt="Linked List Structure">
+                            <img src="images/linkedlistimg1.png" alt="Linked List Structure">
                             <figcaption>Basic structure of a singly linked list</figcaption>
+                        </div>
+
+                        <div class="diagram">
+                            <img src="images/linkedlistimg2.png" alt="Linked List Structure with dummyhead">
+                            <figcaption>Linked List structure with a dummyhead</figcaption>
                         </div>
                         
                         <h4>Basic Linked List Implementation in Java:</h4>
@@ -180,6 +205,12 @@ list.insertAtFront(30);
 list.printList();  // Output: LinkedList: 30 -> 20 -> 10 -> null
                         </pre>
                     </div>
+                `
+            },
+            {
+                id: 'linked-lists-node',
+                title: 'Node Class',
+                content: `
                 `
             }
         ]
