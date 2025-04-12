@@ -104,10 +104,17 @@ public static int binarySearch(int[] arr, int target) {
         ]
     },
     {
+        id: 'sorting',
+        title: 'Sorting Algorithms',
+        description: 'Methods to arrange data in a specific order',
+        icon: '📶',
+        subtopics: []
+    },
+    {
         id: 'linked-lists',
         title: 'Linked Lists',
         description: 'Linear collection of elements connected via pointers',
-        icon: '→→',
+        icon: '🔗',
         subtopics: [
             {
                 id: 'linked-lists-intro',
@@ -181,42 +188,28 @@ list.printList();  // Output: LinkedList: 30 -> 20 -> 10 -> null
         id: 'stacks',
         title: 'Stacks',
         description: 'LIFO data structure with push and pop operations',
-        icon: '▓▓',
+        icon: '🥞',
         subtopics: []
     },
     {
         id: 'queues',
         title: 'Queues',
         description: 'FIFO data structure for sequential processing',
-        icon: '◁◁',
+        icon: '🚶‍♂️🚶‍♂️🚶‍♂️',
         subtopics: []
     },
     {
         id: 'trees',
         title: 'Trees',
         description: 'Hierarchical data structure with parent-child relationships',
-        icon: '◆◆',
-        subtopics: []
-    },
-    {
-        id: 'graphs',
-        title: 'Graphs',
-        description: 'Network structure with vertices and edges',
-        icon: '◎◎',
+        icon: '🎄',
         subtopics: []
     },
     {
         id: 'hash-tables',
         title: 'Hash Tables',
         description: 'Key-value store using hash functions',
-        icon: '##',
-        subtopics: []
-    },
-    {
-        id: 'sorting',
-        title: 'Sorting Algorithms',
-        description: 'Methods to arrange data in a specific order',
-        icon: '↕↕',
+        icon: '🔐',
         subtopics: []
     }
 ];
@@ -320,4 +313,37 @@ function openTopic(topicId) {
             </div>
         `;
     }
+}
+
+/**
+ * Creates a YouTube video component with thumbnail and custom description
+ * @param {string} videoId - The YouTube video ID
+ * @param {string} title - The title of the video
+ * @param {string} description - Your custom description of the video
+ * @returns {string} HTML string for the YouTube component
+ */
+function createYouTubeComponent(videoId, title, description) {
+    // Get YouTube thumbnail URL (using maxresdefault for best quality)
+    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+    
+    return `
+        <div class="youtube-video">
+            <div class="youtube-thumbnail" onclick="openYouTubeVideo('${videoId}')">
+                <img src="${thumbnailUrl}" alt="${title}" />
+                <div class="play-button"></div>
+            </div>
+            <div class="youtube-description">
+                <div class="video-title">${title}</div>
+                <p>${description}</p>
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * Opens the YouTube video when thumbnail is clicked
+ * @param {string} videoId - The YouTube video ID
+ */
+function openYouTubeVideo(videoId) {
+    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
 }

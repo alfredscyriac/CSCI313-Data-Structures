@@ -91,6 +91,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 40px;
 }
 
 .card-icon i {
@@ -217,6 +218,89 @@ code {
     color: #666;
     font-size: 0.9rem;
 }
+
+/* YouTube video component styling */
+.youtube-video {
+    margin: 20px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: white;
+    text-align: center;
+}
+
+.youtube-thumbnail {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.youtube-thumbnail img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-button::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid white;
+    margin-left: 5px;
+}
+
+.youtube-description {
+    margin-top: 10px;
+    text-align: left;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.video-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+/* Dark mode support */
+.dark-mode .youtube-video {
+    background-color: #2c2c44;
+    border-color: #444460;
+}
+
+.dark-mode .youtube-description,
+.dark-mode .video-title {
+    color: #e1e1e1;
+}
+
+a {
+    color: inherit;
+    transition: color 0.5s ease, transform 0.5s ease;
+}
+  
+a:hover {
+    color: #be5d5d;
+}
+  
 
 /* Utility classes */
 .text-center {
