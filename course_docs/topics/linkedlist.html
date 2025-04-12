@@ -8,7 +8,7 @@
 </head>
 <body class="topic-page">
     <header>
-        <div class="container">
+        <div class="header-container">
             <h1>Linked Lists</h1>
             <a href="../index.html" class="back-button">← Back to Topics</a>
         </div>
@@ -38,7 +38,7 @@
                         instead of having a 'head' instance we will have a 'dummyhead.' A dummyhead is simply
                         a node that carrys a null value meaning it isn't considered to be a part of the 
                         linked list, but it allows us to make our methods for the linked list class 
-                        in a much easier way. With that logic the real 'first'node  of the linked list is the 
+                        in a much easier way. With that logic the real 'first' node of the linked list is the 
                         node following the dummyhead.
                     </p> 
 
@@ -76,7 +76,7 @@
                     <p>
                         Node's are the building blocks of a linked list. Each node stores a data 
                         (this could be anything from an int, to a String, and for re-usability purposes 
-                        it can be a geenric). Each node also has a pointer to the next node in the linked list
+                        it can be a generic). Each node also has a pointer to the next node in the linked list
                         via a reference / instance variable we create called 'next.'
                     </p>
                     <div class="diagram">
@@ -101,6 +101,31 @@ public class Node {
     }
 }
                     </pre>
+                    <h4>Breaking down the code:</h3>
+                        <ol>
+                            <li>
+                                In this specific example we are setting our data type to be String.
+                                Like mentioned previously it can be anything. The instance variable to 
+                                reference the data is called 'data.' Again you can call this anything but 
+                                the best practice / coding standards are: 'data', 'value', and 'val.' 
+                            </li>
+                            <li>
+                                Each node has a pointer to another node when it becomes a part of a linked list 
+                                thus why we give that instance variable the data type of Node, you can give the 
+                                variable itself whatever you want but I highly suggest sticking with the standard
+                                which is 'next.'
+                            </li>
+                            <li>
+                                To construct a node we must be passed in one parameter which is the data to be 
+                                stored by the node. What <code>this.data = data</code> really means is, set our instance variable, data, 
+                                equal to the the value we just passed in through the constructor. If the value we were passed in was Node d 
+                                instead of Node data we could do <code>data = d</code>, BUT since we opted for both of them to have
+                                the same name it is the best practice to be <code>this.data = data</code>. 
+                            </li>
+                            <li>
+                                <code>this.next = null</code> may come of as confusing.
+                            </li>
+                        </ol>
                 </section>
                 
             </div>
