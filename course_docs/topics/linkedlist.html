@@ -23,12 +23,13 @@
                 <ul class="topic-navigation">
                     <li><a href="#introduction">Introduction to Linked List</a></li>
                     <li><a href="#node">Node Class</a></li>
+                    <li><a href="#leetcode">LeetCode Questions</a></li>
                 </ul>
             </aside>
             
             <div class="content-area">
                 <section id="introduction" class="subtopic-section">
-                    <h2>Introduction to Linked Lists</h3>
+                    <h2>Introduction to Linked Lists</h2>
                     <p>
                         A linked list is a dynamic data structure where elements are stored in nodes, 
                         and each node points to the next node in the sequence. Linked list commonly have 
@@ -41,14 +42,12 @@
                         in a much easier way. With that logic the real 'first' node of the linked list is the 
                         node following the dummyhead.
                     </p> 
-
                     <h4>Key Characteristics of Linked List:</h4>
                     <ul>
                         <li>Pro: Dynamic sizing (meaning our list can smaller and larger unlike arrays)</li>
                         <li>Pro: Efficient insertions and deletions</li>
                         <li>Con: No random access</li>
                     </ul>
-
                     <h4>Big-O / Time Complexity of Linked List Methods:</h4>
                     <ul>
                         <li>Inset First: O(1)</li>
@@ -64,7 +63,6 @@
                         <img src="../images/linkedlistimg1.png" alt="Linked List Structure">
                         <figcaption>Basic structure of a singly linked list</figcaption>
                     </div>
-
                     <div class="diagram">
                         <img src="../images/linkedlistimg2.png" alt="Linked List Structure with dummyhead">
                         <figcaption>Linked List structure with a dummyhead</figcaption>
@@ -101,7 +99,7 @@ public class Node {
     }
 }
                     </pre>
-                    <h4>Breaking down the code:</h3>
+                    <h4>Breaking down the code:</h4>
                         <ol>
                             <li>
                                 In this specific example we are setting our data type to be String.
@@ -126,6 +124,15 @@ public class Node {
                                 <code>this.next = null</code> may come of as confusing.
                             </li>
                         </ol>
+                </section>
+                <section id="leetcode" class="subtopic-section">
+                    <h2>LeetCode Questions</h2>
+                    <h4>Question 83. Remove Duplicates from Sorted List</h4>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/a8of1vbALuw?si=p0SFYF5SAImBnl-9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    
+
                 </section>
                 
             </div>
