@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures Notes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <h1>Data Structures Notes by Alfred</h1>
+            <div>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="toggle-sidebar" id="toggleSidebar">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pre built landing page for each sub topic -->
+    <div class="topic-page" id="topicPage">
+        <div class="container">
+            <button class="back-button" id="backButton">← Back to All Topics</button>
+            <div class="topic-content">
+                <div class="sidebar" id="sidebar">
+                    <h3 id="sidebarTopicTitle">Topic Title</h3>
+                    <ul class="topic-nav" id="topicNavigation">
+                        <!-- Navigation items will be generated here -->
+                    </ul>
+                </div>
+                
+                <div class="overlay" id="sidebarOverlay"></div>
+                
+                <div class="content-area" id="contentArea">
+                    <h2 id="topicTitle">Topic Title</h2>
+                    <div id="topicContent">
+                        <!-- Topic content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
