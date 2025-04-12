@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked Lists - Data Structures Notes</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="topic-page">
+    <header>
+        <div class="container">
+            <h1>Linked Lists</h1>
+            <a href="../index.html" class="back-button">← Back to Topics</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        
+        <div class="topic-content">
+            
+            <aside class="sidebar">
+                <h3>Subtopics</h3>
+                <ul class="topic-navigation">
+                    <li><a href="#introduction">Introduction to Linked List</a></li>
+                    <li><a href="#node">Node Class</a></li>
+                </ul>
+            </aside>
+            
+            <div class="content-area">
+                <section id="introduction" class="subtopic-section">
+                    <h2>Introduction to Linked Lists</h3>
+                    <p>
+                        A linked list is a dynamic data structure where elements are stored in nodes, 
+                        and each node points to the next node in the sequence. Linked list commonly have 
+                        a 'head' which incidates the first node in the linked list, a 'tail' which indicates
+                        the last node in the linked list, and an int 'size' to represent how many total nodes 
+                        are in the entire linked list. When we make our own implementation of the linked list,
+                        instead of having a 'head' instance we will have a 'dummyhead.' A dummyhead is simply
+                        a node that carrys a null value meaning it isn't considered to be a part of the 
+                        linked list, but it allows us to make our methods for the linked list class 
+                        in a much easier way. With that logic the real 'first'node  of the linked list is the 
+                        node following the dummyhead.
+                    </p> 
+
+                    <h4>Key Characteristics of Linked List:</h4>
+                    <ul>
+                        <li>Pro: Dynamic sizing (meaning our list can smaller and larger unlike arrays)</li>
+                        <li>Pro: Efficient insertions and deletions</li>
+                        <li>Con: No random access</li>
+                    </ul>
+
+                    <h4>Big-O / Time Complexity of Linked List Methods:</h4>
+                    <ul>
+                        <li>Inset First: O(1)</li>
+                        <li>Insert Last: O(1)</li>
+                        <li>Delete First: O(1)</li>
+                        <li>Delete Last: O(n)</li>
+                        <li>Search for Value: O(n)</li>
+                        <li>Access by Index: O(n)</li>
+                        <li>Insert at Index: O(n)</li>
+                        <li>Delete at Index: O(n)</li>
+                    </ul>
+                    <div class="diagram">
+                        <img src="../images/linkedlistimg1.png" alt="Linked List Structure">
+                        <figcaption>Basic structure of a singly linked list</figcaption>
+                    </div>
+
+                    <div class="diagram">
+                        <img src="../images/linkedlistimg2.png" alt="Linked List Structure with dummyhead">
+                        <figcaption>Linked List structure with a dummyhead</figcaption>
+                    </div>
+                </section>
+                
+                <section id="node" class="subtopic-section">
+                    <h2>Node Class</h2>
+                    <p>
+                        Node's are the building blocks of a linked list. Each node stores a data 
+                        (this could be anything from an int, to a String, and for re-usability purposes 
+                        it can be a geenric). Each node also has a pointer to the next node in the linked list
+                        via a reference / instance variable we create called 'next.'
+                    </p>
+                    <div class="diagram">
+                        <img src="../images/linkedlistimg3.png" alt="Node Visualization">
+                        <figcaption>Visual representation of a node</figcaption>
+                    </div>
+                    <p>
+                        My personal preference is to create a Node.java class in the same folder I have 
+                        my LinkedList.java class. It is possible to nest the node class inside of the linked list
+                        class to make it more concise but I prefer it to have it's own file to make the linked
+                        list class less clutered.
+                    </p>
+                    <h4>Constructing the Node class:</h4>
+                    <pre> 
+public class Node {
+    String data; 
+    Node next; 
+    
+    public Node(String data) {
+        this.data = data;
+        this.next = null; 
+    }
+}
+                    </pre>
+                </section>
+                
+            </div>
+
+        </div>
+
+    </div>
+    
+    
+    <script src="../script.js"></script>
+</body>
+</html>

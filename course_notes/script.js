@@ -211,6 +211,34 @@ list.printList();  // Output: LinkedList: 30 -> 20 -> 10 -> null
                 id: 'linked-lists-node',
                 title: 'Node Class',
                 content: `
+                <div class="subtopic-section">
+                    <h3>Node Class</h3>
+                    <p>Node's are the building blocks of a linked list. Each node stores a data 
+                    (this could be anything from an int, to a String, and for re-usability purposes 
+                    it can be a geenric). Each node also has a pointer to the next node in the linked list
+                    via a reference / instance variable we create called 'next.'
+                    </p>
+                    <div class="diagram">
+                        <img src="images/linkedlistimg3.png" alt="Node Visualization">
+                        <figcaption>Visual representation of a node</figcaption>
+                    </div>
+                    <p>My personal preference is to create a Node.java class in the same folder I have 
+                    my LinkedList.java class. It is possible to nest the node class inside of the linked list
+                    class to make it more concise but I prefer it to have it's own file to make the linked
+                    list class less clutered. </p>
+                    <h4>Constructing the Node class:</h4>
+                    <pre> 
+public class Node {
+    String data; 
+    Node next; 
+
+    public Node(String data) {
+        this.data = data;
+        this.next = null; 
+    }
+}
+                    </pre>
+                </div>
                 `
             }
         ]
