@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
         <div class="header-container">
             <h1>Data Structures Notes by Alfred</h1>
@@ -18,10 +18,21 @@
         </div>
     </header>
 
-    <!-- Pre built landing page for each sub topic -->
+    <!-- Landing Page with Topics -->
+    <div class="container" id="topicsPage">
+        <h2>Created for CSCI 313 - Data Structures</h2>
+        <p>Click on any topic to view detailed notes, code examples, and diagrams.</p>
+        
+        <div class="topics-grid" id="topicsGrid">
+            <!-- Topic cards will be generated here -->
+        </div>
+    </div>
+
+    <!-- Topic Content Page -->
     <div class="topic-page" id="topicPage">
         <div class="container">
             <button class="back-button" id="backButton">← Back to All Topics</button>
+            
             <div class="topic-content">
                 <div class="sidebar" id="sidebar">
                     <h3 id="sidebarTopicTitle">Topic Title</h3>
@@ -39,9 +50,9 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
