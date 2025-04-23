@@ -26,6 +26,10 @@ public class AVLNode {
     }
 
     public int balance() {
+        return leftHeight - rightHeight; 
+    }
+
+    public int balanceAbsolute() {
         return Math.abs(leftHeight - rightHeight); 
     }
 
