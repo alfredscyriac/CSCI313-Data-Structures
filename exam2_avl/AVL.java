@@ -1,4 +1,4 @@
-package uniqueAVL;
+package exam2_avl;
 
 public class AVL {
 	private AVLNode root;
@@ -56,20 +56,6 @@ public class AVL {
 		
 		return t; //return the node so that the tree "glues" back together
 	} 
-//	1. rotate right at 7    		|  2. rotate left at 5 then right at 7  
-//			7						    7								
-//		      /  \					  	  /   \
-//		    5     null                                          5     null
-//		   /						       / \
-//		 3						    null   3
-	
-//	1. rotate left at 7                     |  2. rotate right at 5 then left at 7  
-//			7						     7								
-//  	              /	  \					  	   /   \
-//                 null    5                                            null    5
-//                          \						       / \
-//                           3						     3    null
-
 	
 	public static AVLNode rightRotate(AVLNode t) {
 		AVLNode temp = t.left;   //make the rotation

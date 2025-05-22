@@ -1,4 +1,4 @@
-package uniqueAVL;
+package exam2_avl;
 
 import java.io.File;
 import java.io.FileNotFoundException;

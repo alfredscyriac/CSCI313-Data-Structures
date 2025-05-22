@@ -1,4 +1,4 @@
-package uniqueAVL;
+package exam2_avl;
 
 public class AVLNode {
 	int data;
