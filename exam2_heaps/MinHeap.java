@@ -17,10 +17,6 @@ public class MinHeap {
 		heapArray = new int[capacity];
 	}
 	
-	/**
-	 * Insert in the min-heap array and heapify-up
-	 * @param num
-	 */
 	public void insertMinHeap(int num) {
 		if(size == capacity-1) {
 			throw new IllegalStateException("Heap is full, cannot insert "+num);
@@ -30,11 +26,6 @@ public class MinHeap {
 		heapifyUp(size);
 	}
 	
-	/**
-	 * Remove the min value from the min-heap
-	 * and heapify-down
-	 * @return
-	 */
 	public int removeMinHeap() {
 		if(size == 0) {
 			throw new IllegalStateException("Heap is empty, no value to remove.");
@@ -46,11 +37,6 @@ public class MinHeap {
 		return ans;
 	}
 	
-	/**
-	 * Once a value is inserted, make sure it's on the right spot.
-	 * Move it up in necessary.
-	 * @param index
-	 */
 	public void heapifyUp(int index) {
 		int currIndex = index;
 		while(currIndex > 1) {
@@ -63,11 +49,6 @@ public class MinHeap {
 		}
 	}
 	
-	/**
-	 * Once the min (root) is removed, replace the root with the last node.
-	 * Move root down if necessary.
-	 * @param index
-	 */
 	public void heapifyDown() {
 		int currIndex = 1;
 		int smallestChildIndex;
@@ -80,11 +61,14 @@ public class MinHeap {
 			} else {
 				smallestChildIndex = rightChildIndex;
 			}
-		} else if(leftChildIndex <= size) {
+		} 
+		else if(leftChildIndex <= size) {
 			smallestChildIndex = leftChildIndex;
-		} else if(rightChildIndex <= size) {
+		} 
+		else if(rightChildIndex <= size) {
 			smallestChildIndex = rightChildIndex;
-		} else {
+		} 
+		else {
 			return;
 		}
 		
@@ -93,11 +77,6 @@ public class MinHeap {
 		}
 	}
 	
-	/**
-	 * Helper method two swap two nodes in the heap array.
-	 * @param i
-	 * @param j
-	 */
 	public void swap(int i, int j) {
 		int temp = heapArray[i];
 		heapArray[i] = heapArray[j];

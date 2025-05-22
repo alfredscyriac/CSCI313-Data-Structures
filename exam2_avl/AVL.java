@@ -19,7 +19,7 @@ public class AVL {
 	}
 	private static AVLNode insert(AVLNode t, AVLNode node) {
 		if(t == null) {
-			t = node;		//insert when you reach the end (null)
+			t = node;		
 		}
 		else {
 			if(t.data > node.data) { //go left
