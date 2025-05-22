@@ -1,4 +1,4 @@
-package day_05_starter;
+package stacksandqueues;
 import java.util.LinkedList;
 
 public class ListStack {

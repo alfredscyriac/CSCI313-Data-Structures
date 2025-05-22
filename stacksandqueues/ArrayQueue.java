@@ -1,4 +1,4 @@
-package day_05_starter;
+package stacksandqueues;
 
 public class ArrayQueue {
 	String[] queue;

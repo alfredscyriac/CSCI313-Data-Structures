@@ -1,4 +1,4 @@
-package day_03_starter;
+package exam1_linkedlist;
 
 public class LinkedList {
 	public class Node {

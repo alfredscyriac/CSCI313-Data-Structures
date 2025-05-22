@@ -1,4 +1,4 @@
-package avls;
+package uniqueAVL;
 
 import java.io.File;
 import java.io.FileNotFoundException;

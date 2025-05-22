@@ -1,4 +1,4 @@
-package avls; 
+package uniqueAVL;
 
 public class AVLNode {
 	int data;
