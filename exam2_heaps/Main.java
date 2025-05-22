@@ -1,4 +1,4 @@
-package day_10_heaps;
+package exam2_heaps;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package day_11_graphs;
+package exam2_graphs;
 
 /** 
  * This class stores the destination node

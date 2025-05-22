@@ -1,4 +1,4 @@
-package day_11_graphs;
+package exam2_graphs;
 
 public class Main {
 	public static void main(String[] args) {
